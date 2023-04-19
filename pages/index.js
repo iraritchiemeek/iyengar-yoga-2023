@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Header from 'components/header'
 import qs from 'qs';
+import ReactMarkdown from 'react-markdown';
 
 import {Container, Row, Col} from 'react-bootstrap';
 import apiClient from 'utils/apiClient';
@@ -16,7 +17,7 @@ const query = qs.stringify(
 );
 
 export const getStaticProps = async () => {
-  const {data} = await apiClient.get(`/page?${query}`)
+  const {data} = await apiClient.get(`/pages/1?${query}`)
   const page = data.data.attributes
   return {
     props: {
@@ -28,15 +29,20 @@ export const getStaticProps = async () => {
 function renderSection(section) {
   switch (section.__component) {
     case 'sections.title_list_content':
-      // Render title_list_content section
       break;
 
-    case 'sections.title_content_content':
-      console.log(content)
+    case 'text.title-content-content':
+      console.log(section)
+      return (
+        <>
+          <Col xs={12} md={3} ><h2 className="sticky-top">{section.Title}</h2></Col>
+          <Col xs={12} md={3} ><ReactMarkdown className="sticky-top">{section.center_content}</ReactMarkdown></Col>
+          <Col xs={12} md={6}><ReactMarkdown>{section.main_content}</ReactMarkdown></Col>
+        </>
+      )
       break;
 
     case 'sections.empty_empty_content':
-      // Render empty_empty_content section
       break;
 
     default:
@@ -45,6 +51,7 @@ function renderSection(section) {
 }
 
 export default function HomePage({ page }) {
+  console.log(page)
   const banner_image = page.banner_image.data.attributes
   return (
     <main>
@@ -60,6 +67,11 @@ export default function HomePage({ page }) {
           priority
         />
       </div>
+      <Container>
+        <Row className="pt-10">
+          {page.content.map(section => renderSection(section))}
+        </Row>
+      </Container>
     </main>
   );
 }

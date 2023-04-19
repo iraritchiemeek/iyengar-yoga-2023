@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://polar-lowlands-54507.herokuapp.com/api', // Replace with your Strapi instance URL
+  baseURL: 'https://polar-lowlands-54507.herokuapp.com/api',
 });
 
 apiClient.interceptors.request.use((config) => {

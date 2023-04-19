@@ -69,7 +69,6 @@ function renderSection(section) {
     case 'images.images':
       return renderImageSection(section.images.data)
       break;
-
     case 'text.title-content-content':
       return (
         <Row className="pt-10">
@@ -79,6 +78,22 @@ function renderSection(section) {
               <Col xs={12} md={3} ><h2 className="sticky-top">{section.Title}</h2></Col>
               <Col xs={12} md={3} ><ReactMarkdown className="sticky-top">{section.center_content}</ReactMarkdown></Col>
               <Col xs={12} md={6}><ReactMarkdown>{section.main_content}</ReactMarkdown></Col>
+            </Row>
+          </Col>
+          <Col></Col>
+        </Row>
+      )
+      break;
+    case 'text.quote':
+      return (
+        <Row className="pt-10">
+          <Col></Col>
+          <Col xs={12} md={8}>
+            <Row>
+              <Col>
+                <p className="quote">“Words cannot convey the value of yoga. It has to be experienced.”</p>
+                <p className="quote-author">- B.K.S Iyengar</p>
+              </Col>
             </Row>
           </Col>
           <Col></Col>
@@ -103,7 +118,7 @@ export default function HomePage({ page }) {
         <div className="w-100">
           <Image
             src={banner_image.url}
-            style={{objectFit: 'cover', height: '750px', maxWidth: '100%'}}
+            style={{objectFit: 'cover', height: '720px', maxWidth: '100%'}}
             width={banner_image.width}
             height={banner_image.height}
             priority

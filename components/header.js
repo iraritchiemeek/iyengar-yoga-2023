@@ -9,8 +9,6 @@ function Header() {
   const [showTimetable, setShowTimetable] = useState(false);
 
   const handleShowTimetableChange = () => {
-    console.log('test');
-    console.log(showTimetable);
     setShowTimetable(!showTimetable);
   };
 
@@ -21,7 +19,7 @@ function Header() {
           <Navbar.Brand id="logo" href="/">Iyengar Yoga Centre<br/>of Wellington<br/>New Zealand</Navbar.Brand>
         </Col>
         <Col />
-        <Col xs={5}>
+        <Col xs={4}>
           <Navbar.Toggle />
           <Nav>
             <Navbar.Collapse>
@@ -38,9 +36,6 @@ function Header() {
                   <Nav.Item><Link href="/about#about">About</Link></Nav.Item>
                   <Nav.Item><Link href="/about#teachers">Teachers</Link></Nav.Item>
                   <Nav.Item><Link href="#footer">Contact</Link></Nav.Item>
-                </Col>
-                <Col>
-                  <Nav.Item><Link href="/retreats">Retreats</Link></Nav.Item>
                 </Col>
               </Row>
             </Navbar.Collapse>

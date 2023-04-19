@@ -9,7 +9,14 @@ import apiClient from 'utils/apiClient';
 
 const query = qs.stringify(
   {
-    populate: '*',
+    populate: {
+      banner_image: {
+        populate: '*'
+      },
+      content: {
+        populate: '*'
+      }
+    }
   },
   {
     encodeValuesOnly: true,
@@ -26,23 +33,55 @@ export const getStaticProps = async () => {
   };
 };
 
+function renderImageSection(images) {
+  console.log(images)
+  switch(images.length){
+    case 1:
+      break
+    case 2:
+      return(
+        <Row className="pt-10">
+          <Col xs={12} md={6}>
+            <Image
+              src={images[0].attributes.url}
+              style={{objectFit: 'contain', maxWidth: '100%', maxHeight: '420px'}}
+              width={images[0].attributes.width}
+              height={images[0].attributes.height}
+            />
+          </Col>
+          <Col></Col>
+          <Col xs={12} md={4}>
+            <Image
+              src={images[1].attributes.url}
+              style={{objectFit: 'contain', maxWidth: '100%',  maxHeight: '420px'}}
+              width={images[1].attributes.width}
+              height={images[1].attributes.height}
+            />
+          </Col>
+        </Row>
+      )
+
+    default:
+      return null
+    }
+}
+
 function renderSection(section) {
+  console.log(section)
   switch (section.__component) {
-    case 'sections.title_list_content':
+    case 'images.images':
+      return renderImageSection(section.images.data)
       break;
 
     case 'text.title-content-content':
       console.log(section)
       return (
-        <>
+        <Row className="pt-10">
           <Col xs={12} md={3} ><h2 className="sticky-top">{section.Title}</h2></Col>
           <Col xs={12} md={3} ><ReactMarkdown className="sticky-top">{section.center_content}</ReactMarkdown></Col>
           <Col xs={12} md={6}><ReactMarkdown>{section.main_content}</ReactMarkdown></Col>
-        </>
+        </Row>
       )
-      break;
-
-    case 'sections.empty_empty_content':
       break;
 
     default:
@@ -58,7 +97,7 @@ export default function HomePage({ page }) {
       <Container>
         <Header />
       </Container>
-      <div class="w-100">
+      <div className="w-100">
         <Image
           src={banner_image.url}
           style={{objectFit: 'cover', height: '750px', maxWidth: '100%'}}
@@ -68,9 +107,7 @@ export default function HomePage({ page }) {
         />
       </div>
       <Container>
-        <Row className="pt-10">
-          {page.content.map(section => renderSection(section))}
-        </Row>
+        {page.content.map(section => renderSection(section))}
       </Container>
     </main>
   );

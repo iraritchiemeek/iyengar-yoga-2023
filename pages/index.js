@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from 'components/header'
@@ -5,7 +6,6 @@ import Footer from 'components/footer'
 import BgGrid from 'components/bgGrid'
 import DynamicContent from 'components/dynamicContent'
 import qs from 'qs';
-
 import {Container, Row, Col} from 'react-bootstrap';
 import apiClient from 'utils/apiClient';
 
@@ -33,12 +33,16 @@ export const getStaticProps = async () => {
 };
 
 export default function HomePage({ page }) {
+
+  const [headerHeight, setHeaderHeight] = useState(190);
+
   const banner_image = page.banner_image.data.attributes
+
   return (
     <>
-      <Header />
-      <main>
-        <BgGrid />
+      <BgGrid />
+      <Header headerHeight={headerHeight} setHeaderHeight={setHeaderHeight} />
+      <main style={{paddingTop: headerHeight}}>
         <div className="w-100">
           <Image
             src={banner_image.url}

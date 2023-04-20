@@ -27,7 +27,7 @@ function DynamicContent(props) {
         return(
           <>
             <Col xs={12} md={6}>
-              <Parallax speed={getRandomNumber(-1, 9)}>
+              <Parallax speed={getRandomNumber(-5, -10)}>
                 <Image
                   src={getImage(0).url}
                   width={getImage(0).width}
@@ -37,7 +37,7 @@ function DynamicContent(props) {
             </Col>
             <Col></Col>
             <Col xs={12} md={4}>
-              <Parallax speed={getRandomNumber(-1, 9)}>
+              <Parallax speed={getRandomNumber(-5, -10)}>
                 <Image
                   src={getImage(1).url}
                   width={getImage(1).width}
@@ -54,7 +54,7 @@ function DynamicContent(props) {
             <Col xs={12} md={6} className="d-flex flex-wrap">
               <Row>
                 <Col xs={12}>
-                  <Parallax speed={getRandomNumber(-1, 9)}>
+                  <Parallax speed={getRandomNumber(-5, -10)}>
                     <Image
                       src={getImage(0).url}
                       width={getImage(0).width}
@@ -64,7 +64,7 @@ function DynamicContent(props) {
                 </Col>
                 <Col/>
                 <Col xs={12} md={8}>
-                  <Parallax speed={getRandomNumber(-1, 9)}>
+                  <Parallax speed={getRandomNumber(-5, -10)}>
                     <Image
                       className="mt-4"
                       src={getImage(1).url}
@@ -77,7 +77,7 @@ function DynamicContent(props) {
             </Col>
             <Col></Col>
             <Col xs={12} md={4} className="d-flex align-items-center">
-              <Parallax speed={getRandomNumber(-1, 9)}>
+              <Parallax speed={getRandomNumber(-5, -10)}>
                 <Image
                   src={getImage(2).url}
                   width={getImage(2).width}

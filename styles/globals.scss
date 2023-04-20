@@ -26,6 +26,29 @@ a {
   }
 }
 
+#header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 3;
+}
+
+#header-row {
+  transition: height 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  .hideable {
+    opacity: 1;
+    transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  &.minified {
+    #logo {
+      color: $blue;
+    }
+    .hideable {
+      opacity: 0;
+    }
+  }
+}
+
 .nav-item {
   cursor: pointer;
   text-decoration: underline;
@@ -56,9 +79,11 @@ h3 {
 }
 
 #logo {
+  transition: color 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   font-weight: bold;
   line-height: 1.1em;
   font-size: 1.3em;
+  text-decoration: none;
 }
 
 .bg-blue {
@@ -75,7 +100,7 @@ h3 {
   position: fixed;
   height: 100%;
   pointer-events: none;
-  z-index: 2;
+  z-index: 4;
   .row {
     height: 100%;
   }
@@ -130,7 +155,9 @@ ul {
   }
 }
 
-
-
+.sticky-top {
+  top: 45px; //minified header height
+  z-index: 2;
+}
 
 

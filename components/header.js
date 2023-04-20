@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
 import Link from 'next/link';
 
 function Header() {
@@ -13,36 +12,38 @@ function Header() {
   };
 
   return (
-    <Navbar className="bg-white w-100 py-5">
-      <Row className="w-100">
-        <Col xs={3}>
-          <Navbar.Brand id="logo" href="/">Iyengar Yoga Centre<br/>of Wellington<br/>New Zealand</Navbar.Brand>
+    <Container>
+      <Row className="bg-white py-5">
+        <Col xs={2}>
+          <Link id="logo" href="/">Iyengar Yoga Centre<br/>of Wellington<br/>New Zealand</Link>
         </Col>
         <Col />
         <Col xs={4}>
-          <Navbar.Toggle />
-          <Nav>
-            <Navbar.Collapse>
-              <Row className="w-100">
-                <Col className="">
-                  <Nav.Item onClick={handleShowTimetableChange}>Timetable</Nav.Item>
-                </Col>
-                <Col className="">
-                  <Nav.Item><Link href="/#new-students">New students</Link></Nav.Item>
-                  <Nav.Item><Link href="/#class-levels">Class levels</Link></Nav.Item>
-                  <Nav.Item><Link href="/#pricing">Pricing</Link></Nav.Item>
-                </Col>
-                <Col className="">
-                  <Nav.Item><Link href="/about#about">About</Link></Nav.Item>
-                  <Nav.Item><Link href="/about#teachers">Teachers</Link></Nav.Item>
-                  <Nav.Item><Link href="#footer">Contact</Link></Nav.Item>
-                </Col>
-              </Row>
-            </Navbar.Collapse>
-          </Nav>
+          <nav>
+            <Row>
+              <Col>
+                <Link href="#" onClick={handleShowTimetableChange}>Timetable</Link>
+              </Col>
+              <Col>
+                <ul>
+                  <li><Link href="/#new-students">New students</Link></li>
+                  <li><Link href="/#class-levels">Class levels</Link></li>
+                  <li><Link href="/#pricing">Pricing</Link></li>
+                </ul>
+              </Col>
+              <Col>
+                <ul>
+                  <li><Link href="/about#about">About</Link></li>
+                  <li><Link href="/about#teachers">Teachers</Link></li>
+                  <li><Link href="#footer">Contact</Link></li>
+                  <li><Link href="#footer">Retreats</Link></li>
+                </ul>
+              </Col>
+            </Row>
+          </nav>
         </Col>
       </Row>
-    </Navbar>
+    </Container>
   );
 }
 

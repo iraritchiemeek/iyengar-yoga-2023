@@ -2,9 +2,11 @@ import {Container, Row, Col} from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
 import Link from 'next/link';
-
+import { Parallax } from 'react-scroll-parallax';
 
 function DynamicContent(props) {
+
+  const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
   function renderImageSection(images) {
     const getImage = index => images[index].attributes.formats.medium
@@ -25,19 +27,23 @@ function DynamicContent(props) {
         return(
           <>
             <Col xs={12} md={6}>
-              <Image
-                src={getImage(0).url}
-                width={getImage(0).width}
-                height={getImage(0).height}
-              />
+              <Parallax speed={getRandomNumber(-1, 9)}>
+                <Image
+                  src={getImage(0).url}
+                  width={getImage(0).width}
+                  height={getImage(0).height}
+                />
+              </Parallax>
             </Col>
             <Col></Col>
             <Col xs={12} md={4}>
-              <Image
-                src={getImage(1).url}
-                width={getImage(1).width}
-                height={getImage(1).height}
-              />
+              <Parallax speed={getRandomNumber(-1, 9)}>
+                <Image
+                  src={getImage(1).url}
+                  width={getImage(1).width}
+                  height={getImage(1).height}
+                />
+              </Parallax>
             </Col>
           </>
         )
@@ -48,30 +54,36 @@ function DynamicContent(props) {
             <Col xs={12} md={6} className="d-flex flex-wrap">
               <Row>
                 <Col xs={12}>
-                  <Image
-                    src={getImage(0).url}
-                    width={getImage(0).width}
-                    height={getImage(0).height}
-                  />
+                  <Parallax speed={getRandomNumber(-1, 9)}>
+                    <Image
+                      src={getImage(0).url}
+                      width={getImage(0).width}
+                      height={getImage(0).height}
+                    />
+                  </Parallax>
                 </Col>
                 <Col/>
                 <Col xs={12} md={8}>
-                  <Image
-                    className="mt-4"
-                    src={getImage(1).url}
-                    width={getImage(1).width}
-                    height={getImage(1).height}
-                  />
+                  <Parallax speed={getRandomNumber(-1, 9)}>
+                    <Image
+                      className="mt-4"
+                      src={getImage(1).url}
+                      width={getImage(1).width}
+                      height={getImage(1).height}
+                    />
+                  </Parallax>
                 </Col>
               </Row>
             </Col>
             <Col></Col>
             <Col xs={12} md={4} className="d-flex align-items-center">
-              <Image
-                src={getImage(2).url}
-                width={getImage(2).width}
-                height={getImage(2).height}
-              />
+              <Parallax speed={getRandomNumber(-1, 9)}>
+                <Image
+                  src={getImage(2).url}
+                  width={getImage(2).width}
+                  height={getImage(2).height}
+                />
+              </Parallax>
             </Col>
           </>
         )

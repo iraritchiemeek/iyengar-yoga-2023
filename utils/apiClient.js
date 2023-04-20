@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://polar-lowlands-54507.herokuapp.com/api',
+  baseURL: 'https://polar-lowlands-54507.herokuapp.com/api', 
 });
 
 apiClient.interceptors.request.use((config) => {

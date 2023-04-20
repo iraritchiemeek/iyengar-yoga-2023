@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from 'components/header'
+import Footer from 'components/footer'
 import BgGrid from 'components/bgGrid'
 import DynamicContent from 'components/dynamicContent'
 import qs from 'qs';
@@ -35,9 +36,9 @@ export default function HomePage({ page }) {
   const banner_image = page.banner_image.data.attributes
   return (
     <>
+      <Header />
       <main>
         <BgGrid />
-        <Header />
         <div className="w-100">
           <Image
             src={banner_image.url}
@@ -47,10 +48,11 @@ export default function HomePage({ page }) {
             priority
           />
         </div>
-        <Container>
+        <Container className="dynamic-content">
           {page.content.map(section => <DynamicContent section={section} />)}
         </Container>
       </main>
+      <Footer />
     </>
   );
 }

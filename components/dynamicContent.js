@@ -10,6 +10,16 @@ function DynamicContent(props) {
     const getImage = index => images[index].attributes.formats.medium
     switch(images.length){
       case 1:
+        return (
+          <Col>
+            <Image
+              style={{maxHeight: 'unset'}}
+              src={images[0].attributes.url}
+              width={images[0].attributes.width}
+              height={images[0].attributes.height}
+            />
+          </Col>
+        )
         break
       case 2:
         return(
@@ -140,7 +150,7 @@ function DynamicContent(props) {
     switch (section.__component.split('.')[0]) {
       case 'images':
         return (
-          <Row className="pt-10 image-section">
+          <Row className="image-section">
             {renderImageSection(section.images.data)}
           </Row>
         )
@@ -148,7 +158,7 @@ function DynamicContent(props) {
       case 'list':
       case 'text':
         return (
-          <Row className="pt-10">
+          <Row>
             <Col></Col>
             <Col xs={12} md={8}>
               <Row >

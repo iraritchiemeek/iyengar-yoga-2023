@@ -40,7 +40,7 @@ function Header(props) {
     <header id="header">
       <Container>
         <Row className={`${props.headerMinified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
-          <Col xs={8} md={2}>
+          <Col xs={8} md={4}>
             <Link id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
           </Col>
           <Col className="d-none d-md-block" />

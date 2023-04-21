@@ -21,6 +21,7 @@ body {
 a {
   color: inherit;
   text-decoration: underline;
+  transition: opacity,color 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   &:hover {
     color: $blue;
   }
@@ -31,6 +32,7 @@ a {
   width: 100%;
   background-color: white;
   z-index: 3;
+  border-bottom: 1px solid rgba(119,196,217, 0.3);
 }
 
 #header-row {
@@ -40,13 +42,16 @@ a {
     height: 95px;
     transition: height 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
-  #logo>span, nav ul li:not(.fw-bold) {
+  #logo>span, nav ul li {
     opacity: 1;
     transition: opacity 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
   &.minified {
     #logo>span, nav ul li:not(.fw-bold) {
       opacity: 0;
+    }
+    nav ul li.fw-bold {
+      color: $blue;
     }
     padding-top: 10px;
     &>div {
@@ -162,7 +167,7 @@ ul {
 }
 
 .sticky-top {
-  top: 45px; //minified header height
+  top: 55px; //minified header height
   z-index: 2;
 }
 

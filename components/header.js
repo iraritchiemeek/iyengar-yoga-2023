@@ -9,13 +9,12 @@ function Header(props) {
   const minHeight = 10;
   const maxHeight = 55;
   const [showTimetable, setShowTimetable] = useState(false);
-  const [minified, setMinified] = useState(false)
 
   const handleScroll = () => {
     const newHeight = Math.max(maxHeight - window.scrollY, minHeight);
     if (newHeight >= minHeight && newHeight <= maxHeight) {
       props.setHeaderHeight(newHeight)
-      setMinified(newHeight > minHeight)
+      props.setHeaderMinified(newHeight > minHeight)
     } 
    };
 
@@ -31,7 +30,7 @@ function Header(props) {
   return (
     <header id="header">
       <Container>
-        <Row className={`${minified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
+        <Row className={`${props.headerMinified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
           <Col xs={12} md={2}>
             <Link id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
           </Col>
@@ -41,12 +40,7 @@ function Header(props) {
               <Row>
                 <Col>
                   <ul>
-                    <li className="fw-bold"><Link href="#">Timetable</Link></li>
-                  </ul>
-                </Col>
-                <Col>
-                  <ul>
-                    <li className="fw-bold"><Link href="/#">The practice</Link></li>
+                    <li><Link href="/#">The practice</Link></li>
                     <li><Link href="/#new-students">New students</Link></li>
                     <li><Link href="/#class-levels">Class levels</Link></li>
                     <li><Link href="/#pricing">Pricing</Link></li>
@@ -54,10 +48,15 @@ function Header(props) {
                 </Col>
                 <Col>
                   <ul>
-                    <li className="fw-bold"><Link href="/our-studio">Our Studio</Link></li>
+                    <li><Link href="/our-studio">Our Studio</Link></li>
                     <li><Link href="/about#teachers">Teachers</Link></li>
                     <li><Link href="#footer">Contact</Link></li>
                     <li><Link href="#footer">Retreats</Link></li>
+                  </ul>
+                </Col>
+                <Col>
+                  <ul>
+                    <li className="fw-bold"><Link href="/timetable">Timetable</Link></li>
                   </ul>
                 </Col>
               </Row>

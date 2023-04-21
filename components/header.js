@@ -5,9 +5,9 @@ import Container from 'react-bootstrap/Container';
 import Link from 'next/link';
 
 function Header(props) {
-  const minHeight = 46;
-  const heightToMinify = 100;
-  const maxHeight = 190;
+  // const minHeight = 46;
+  const minHeight = 10;
+  const maxHeight = 55;
   const [showTimetable, setShowTimetable] = useState(false);
   const [minified, setMinified] = useState(false)
 
@@ -15,7 +15,7 @@ function Header(props) {
     const newHeight = Math.max(maxHeight - window.scrollY, minHeight);
     if (newHeight >= minHeight && newHeight <= maxHeight) {
       props.setHeaderHeight(newHeight)
-      setMinified(newHeight > heightToMinify)
+      setMinified(newHeight > minHeight)
     } 
    };
 
@@ -31,19 +31,22 @@ function Header(props) {
   return (
     <header id="header">
       <Container>
-        <Row className={`d-flex align-items-center ${minified ? '' : 'minified'}`} id="header-row" style={{height: props.headerHeight}}>
-          <Col xs={2}>
-            <Link id="logo" href="/">Iyengar Yoga Centre<span className="hideable"><br/>of Wellington<br/>New Zealand</span></Link>
+        <Row className={`${minified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
+          <Col xs={12} md={2}>
+            <Link id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
           </Col>
           <Col />
-          <Col xs={4}>
-            <nav className="hideable">
+          <Col xs={6}>
+            <nav>
               <Row>
                 <Col>
-                  <Link href="#" >Timetable</Link>
+                  <ul>
+                    <li className="fw-bold"><Link href="#">Timetable</Link></li>
+                  </ul>
                 </Col>
                 <Col>
                   <ul>
+                    <li className="fw-bold"><Link href="/#">The practice</Link></li>
                     <li><Link href="/#new-students">New students</Link></li>
                     <li><Link href="/#class-levels">Class levels</Link></li>
                     <li><Link href="/#pricing">Pricing</Link></li>
@@ -51,7 +54,7 @@ function Header(props) {
                 </Col>
                 <Col>
                   <ul>
-                    <li><Link href="/about#about">About</Link></li>
+                    <li className="fw-bold"><Link href="/our-studio">Our Studio</Link></li>
                     <li><Link href="/about#teachers">Teachers</Link></li>
                     <li><Link href="#footer">Contact</Link></li>
                     <li><Link href="#footer">Retreats</Link></li>

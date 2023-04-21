@@ -18,7 +18,7 @@ const query = qs.stringify(
 );
 
 export const getStaticProps = async () => {
-  const {data} = await apiClient.get(`/pages/1?${query}`)
+  const {data} = await apiClient.get(`/pages/2?${query}`)
   const page = data.data.attributes
   return {
     props: {

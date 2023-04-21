@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Link from 'next/link';
+import HamburgerMenu from 'components/hamburger';
 
 function Header(props) {
   // const minHeight = 46;
@@ -31,11 +32,12 @@ function Header(props) {
     <header id="header">
       <Container>
         <Row className={`${props.headerMinified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
-          <Col xs={12} md={2}>
+          <Col xs={8} md={2}>
             <Link id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
           </Col>
-          <Col />
-          <Col xs={6}>
+          <Col className="d-none d-md-block" />
+          <Col xs={4} md={6}>
+            <HamburgerMenu />
             <nav>
               <Row>
                 <Col>

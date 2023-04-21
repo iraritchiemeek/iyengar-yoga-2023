@@ -30,12 +30,18 @@ a {
 #header {
   position: fixed;
   width: 100%;
-  // background-color: white;
   z-index: 3;
-  // border-bottom: 1px solid rgba(119,196,217, 0.3);
+  @media (max-width: 767px) {
+    background-color: white;
+  }
 }
 
 #header-row {
+  @media (max-width: 767px) {
+    nav {
+      display: none;
+    }
+  }
   transition: padding-top 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   padding-top: 55px;
   &>div {
@@ -121,7 +127,7 @@ h3 {
       &:first-child {
         border-left: 1px solid $blue;
       }
-      opacity: 0.3;
+      opacity: 0.25;
     }
   }
 }
@@ -163,6 +169,10 @@ ul {
 .dynamic-content {
   &>.row {
     padding-top: 7em;
+    &.image-section {
+      padding-top: 12em;
+      padding-bottom: 12em;
+    }
   }
 }
 
@@ -170,5 +180,42 @@ ul {
   top: 10px; //minified header height
   z-index: 2;
 }
+
+.hamburger-menu {
+  @media (min-width: 767px) {
+    display: none;
+  }
+  position: relative;
+  cursor: pointer;
+  &.open {
+    .line1 {
+      transform: translateY(2px) rotate(0deg) scale(0.7, 1);
+    }
+
+    .line2 {
+      transform: translateY(-1px) scale(1, 0.6) rotate(90deg);
+    }
+
+    .line3 {
+      transform: translate(-6px, 7px) rotate(-45deg) scale(0.4, 1);
+    }
+
+    .line4 {
+      transform: translate(6px, -1px) rotate(45deg) scale(0.4, 1);
+    }
+  }
+  width: 40px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.line {
+  height: 4px;
+  background-color: black;
+  transition: all 0.3s ease;
+}
+
 
 

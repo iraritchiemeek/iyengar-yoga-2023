@@ -12,7 +12,6 @@ export default function App({ Component, pageProps }) {
   const [headerHeight, setHeaderHeight] = useState(55);
   const [headerMinified, setHeaderMinified] = useState(false)
   const router = useRouter()
-  console.log(router.asPath)
 
   return (
     <ParallaxProvider>

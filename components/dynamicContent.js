@@ -114,7 +114,6 @@ function DynamicContent(props) {
         )
         break;
       case 'list.class-level-list':
-        console.log(section);
         return (
           <>
             <Col xs={12} md={3} ><h2 className="sticky-top">{section.title}</h2></Col>
@@ -158,7 +157,6 @@ function DynamicContent(props) {
   const convertToSlug = string => string.toLowerCase().replace(/[^\w ]+/g, '') .replace(/ +/g, '-')
 
   function renderSection(section) {
-    console.log(section)
     switch (section.__component.split('.')[0]) {
       case 'images':
         return (

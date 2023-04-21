@@ -6,6 +6,7 @@ import Header from 'components/header'
 import Footer from 'components/footer'
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { useRouter } from 'next/router'
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({ Component, pageProps }) {
   const [headerHeight, setHeaderHeight] = useState(55);
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </div>
       <Footer />
+      <Analytics />
     </ParallaxProvider>
   )
 }

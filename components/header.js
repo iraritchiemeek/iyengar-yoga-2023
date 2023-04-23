@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Link from 'next/link';
 import Hamburger from 'components/mobileMenu';
+import LogoColorChange from 'components/logoColorChange';
 
 function Header(props) {
   // const minHeight = 46;
@@ -35,13 +36,12 @@ function Header(props) {
     };
    }, []);
 
-
   return (
     <header id="header">
       <Container>
         <Row className={`${props.headerMinified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
           <Col xs={8} md={4}>
-            <Link id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
+            <LogoColorChange />
           </Col>
           <Col className="d-none d-md-block" />
           <Col className="d-md-none">
@@ -68,7 +68,7 @@ function Header(props) {
                 </Col>
                 <Col>
                   <ul>
-                    <li className="fw-bold"><Link href="/timetable">Timetable</Link></li>
+                    <li><Link href="/timetable">Timetable</Link></li>
                   </ul>
                 </Col>
               </Row>

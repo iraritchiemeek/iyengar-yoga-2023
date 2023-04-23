@@ -40,15 +40,19 @@ a {
   @media (max-width: 767px) {
     .nav-wrapper {
       height: 0;
-      display: none;
+      visibility: hidden;
       nav {
-        display: none;
+        transition: opacity 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        transition-delay: 0.4s;
+        visibility: hidden;
+        opacity: 0;
       }
       &.mobile-toggled {
-        display: block;
-        height: 130px;
+        visibility: visible;
+        height: 110px;
         nav {
-          display: block;
+          visibility: visible;
+          opacity: 1;
         }
       }
     }
@@ -73,6 +77,11 @@ a {
     padding-top: 10px;
     &>div {
       height: 25px;
+      @media (max-width: 767px) {
+        &:last-child {
+          height: 0;
+        }
+      }
     }
   }
 }
@@ -106,12 +115,26 @@ h3 {
   padding-top: 8em;
 }
 
-#logo {
+.logo {
+  position: absolute;
   transition: color 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   font-weight: bold;
   line-height: 1.1em;
   font-size: 1.3em;
   text-decoration: none;
+}
+
+#logo {
+  color: black;
+  z-index: 1;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+#logo-overlay {
+  color: white;
+  -webkit-mask: url(#logo-mask);
+  mask: url(#logo-mask);
+  z-index: 2;
 }
 
 .bg-blue {
@@ -162,6 +185,9 @@ h3 {
 .image-section img {
   object-fit: contain;
   object-position: right;
+  &.left {
+    object-position: left;
+  }
   @media (max-width: 767px) {
     object-position: center;
   }
@@ -189,7 +215,7 @@ ul {
 
 .sticky-top {
   top: 10px; //minified header height
-  z-index: 2;
+  // z-index: 2;
 }
 
 .hamburger-menu {
@@ -228,6 +254,20 @@ ul {
   transition: all 0.3s ease;
 }
 
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; // Adjust this value for the desired bar height
+  z-index: 9999;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: $blue;
+}
 
 
 

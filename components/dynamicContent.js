@@ -9,13 +9,15 @@ function DynamicContent(props) {
   const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
   function renderImageSection(images) {
+    console.log(images)
     const getImage = index => images[index].attributes.formats.medium
     switch(images.length){
       case 1:
         return (
           <Col>
             <Image
-              style={{maxHeight: 'unset'}}
+              className="left"
+              style={{maxHeight: 'unset', objectFit: 'cover', objectPosition: 'center'}}
               src={images[0].attributes.url}
               width={images[0].attributes.width}
               height={images[0].attributes.height}
@@ -27,8 +29,9 @@ function DynamicContent(props) {
         return(
           <>
             <Col xs={12} md={6}>
-              <Parallax speed={getRandomNumber(-5, -10)}>
+              <Parallax speed={getRandomNumber(-10, 10)}>
                 <Image
+                  className="left"
                   src={getImage(0).url}
                   width={getImage(0).width}
                   height={getImage(0).height}
@@ -37,7 +40,7 @@ function DynamicContent(props) {
             </Col>
             <Col></Col>
             <Col xs={12} md={4}>
-              <Parallax speed={getRandomNumber(-5, -10)}>
+              <Parallax speed={getRandomNumber(-10, 10)}>
                 <Image
                   src={getImage(1).url}
                   width={getImage(1).width}
@@ -54,8 +57,9 @@ function DynamicContent(props) {
             <Col xs={12} md={6} className="d-flex flex-wrap">
               <Row>
                 <Col xs={12}>
-                  <Parallax speed={getRandomNumber(-5, -10)}>
+                  <Parallax speed={getRandomNumber(-10, 10)}>
                     <Image
+                      className="left"
                       src={getImage(0).url}
                       width={getImage(0).width}
                       height={getImage(0).height}
@@ -64,8 +68,9 @@ function DynamicContent(props) {
                 </Col>
                 <Col/>
                 <Col xs={12} md={8}>
-                  <Parallax speed={getRandomNumber(-5, -10)}>
+                  <Parallax speed={getRandomNumber(-10, 10)}>
                     <Image
+                      className="left"
                       className="mt-4"
                       src={getImage(1).url}
                       width={getImage(1).width}
@@ -77,7 +82,7 @@ function DynamicContent(props) {
             </Col>
             <Col></Col>
             <Col xs={12} md={4} className="d-flex align-items-center">
-              <Parallax speed={getRandomNumber(-5, -10)}>
+              <Parallax speed={getRandomNumber(-10, 10)}>
                 <Image
                   src={getImage(2).url}
                   width={getImage(2).width}

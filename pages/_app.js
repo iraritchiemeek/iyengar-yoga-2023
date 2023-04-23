@@ -4,6 +4,7 @@ import { useState } from 'react';
 import BgGrid from 'components/bgGrid'
 import Header from 'components/header'
 import Footer from 'components/footer'
+import ScrollProgressBar from 'components/scrollProgressBar'
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { useRouter } from 'next/router'
 import { Analytics } from '@vercel/analytics/react';
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }) {
       {router.asPath != '/timetable' &&
         <BgGrid />
       }
+      <ScrollProgressBar />
       <Header headerHeight={headerHeight} setHeaderHeight={setHeaderHeight} headerMinified={headerMinified} setHeaderMinified={setHeaderMinified} />
       <div style={{paddingTop: headerHeight + 150}}>
         <Component {...pageProps} />

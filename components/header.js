@@ -52,23 +52,24 @@ function Header(props) {
               <Row>
                 <Col>
                   <ul>
-                    <li><Link href="/#">The Practice</Link></li>
+                    <li><Link href="/#">Home</Link></li>
                     <li><Link href="/#new-students">New students</Link></li>
                     <li><Link href="/#class-levels">Class levels</Link></li>
                     <li><Link href="/#pricing">Pricing</Link></li>
-                  </ul>
-                </Col>
-                <Col>
-                  <ul>
-                    <li><Link href="/our-studio">Our Studio</Link></li>
-                    <li><Link href="/about#teachers">Teachers</Link></li>
-                    <li><Link href="#footer">Contact</Link></li>
                     <li><Link href="#footer">Retreats</Link></li>
                   </ul>
                 </Col>
                 <Col>
                   <ul>
-                    <li><Link href="/timetable">Timetable</Link></li>
+                    <li><Link href="/our-studio">Our Studio</Link></li>
+                    <li><Link href="/our-studio#teachers">Teachers</Link></li>
+                    <li><Link href="/our-studio#teachers">Why Iyengar yoga</Link></li>
+                    <li><Link href="#footer">Contact</Link></li>
+                  </ul>
+                </Col>
+                <Col>
+                  <ul>
+                    <li className="fw-bold"><Link href="/timetable">Timetable</Link></li>
                   </ul>
                 </Col>
               </Row>

@@ -1,6 +1,7 @@
 import {Container, Row, Col} from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
+import StickyTopListSection from 'components/stickyTopListSection'
 import Link from 'next/link';
 import { Parallax } from 'react-scroll-parallax';
 
@@ -9,7 +10,6 @@ function DynamicContent(props) {
   const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
   function renderImageSection(images) {
-    console.log(images)
     const getImage = index => images[index].attributes.formats.medium
     switch(images.length){
       case 1:
@@ -100,8 +100,8 @@ function DynamicContent(props) {
   }
 
   function renderTextSection(section) {
-    switch (section.__component) {
-      case 'text.title-content-content':
+    switch (section.__typename) {
+      case 'ComponentTextTitleContentContent':
         return (
           <>
             <Col xs={12} md={3} ><h2 className="sticky-top">{section.Title}</h2></Col>
@@ -110,7 +110,7 @@ function DynamicContent(props) {
           </>
         )
         break;
-      case 'text.quote':
+      case 'ComponentTextQuote':
         return (
           <Col>
             <p className="quote">“{section.Quote}”</p>
@@ -118,60 +118,35 @@ function DynamicContent(props) {
           </Col>
         )
         break;
-      case 'list.class-level-list':
-        return (
-          <>
-            <Col xs={12} md={3} ><h2 className="sticky-top">{section.title}</h2></Col>
-            <Col xs={12} md={3} >
-              <div className="sticky-top">
-                {renderListNav(section.class_levels.data)}
-              </div>
-            </Col>
-            <Col xs={12} md={6}>
-              {renderListContent(section.class_levels.data)}
-            </Col>
-          </>
-        )
-        break;
       default:
         return null;
     }
   }
 
-  const renderListNav = list => {
-    return (
-      <ul className="pb-4">
-        {list.map(item => <li><a href={`#${convertToSlug(item.attributes.Title)}`}>{item.attributes.Title}</a></li>)}
-      </ul>
-    )
-  }
-
-  const renderListContent = list => {
-    return (
-      list.map(item => {
-        return (
-          <div id={`${convertToSlug(item.attributes.Title)}`} className="pb-4">
-            <h3>{item.attributes.Title}</h3>
-            <ReactMarkdown>{item.attributes.Description}</ReactMarkdown>
-          </div>
-        )
-      })
-    )
-  }
-
-  const convertToSlug = string => string.toLowerCase().replace(/[^\w ]+/g, '') .replace(/ +/g, '-')
-
   function renderSection(section) {
-    switch (section.__component.split('.')[0]) {
-      case 'images':
+    switch (section.__typename) {
+      case 'ComponentImagesImages':
+        console.log(section)
         return (
           <Row className="image-section">
             {renderImageSection(section.images.data)}
           </Row>
         )
         break;
-      case 'list':
-      case 'text':
+      case 'ComponentListClassLevelList':
+        return (
+          <Row>
+            <Col></Col>
+            <Col xs={12} md={8}>
+              <Row >
+                <StickyTopListSection section={section} />
+              </Row>
+            </Col>
+            <Col></Col>
+          </Row>
+        )
+      case 'ComponentTextQuote':
+      case 'ComponentTextTitleContentContent':
         return (
           <Row>
             <Col></Col>

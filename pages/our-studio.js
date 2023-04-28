@@ -1,31 +1,20 @@
 import Image from 'next/image'
 import DynamicContent from 'components/dynamicContent'
-import qs from 'qs';
 import {Container, Row, Col} from 'react-bootstrap';
-import apiClient from 'utils/apiClient';
-
-const query = qs.stringify(
-  {
-    populate: {
-      banner_image: {
-        populate: '*'
-      },
-      content: {
-        populate: '*'
-      }
-    }
-  }
-);
+import client from "./graphql/apollo-client";
+import GET_PAGE_QUERY from './graphql/queries/getPage.gql';
 
 export const getStaticProps = async () => {
-  const {data} = await apiClient.get(`/pages/2?${query}`)
-  const page = data.data.attributes
-  return {
-    props: {
-      page: page
-    },
-  };
-};
+    const { data } = await client.query({
+      query: GET_PAGE_QUERY,
+      variables: { id: 2 },
+    })
+    return {
+      props: {
+        page: data.page.data.attributes
+      },
+   };
+}
 
 export default function HomePage({ page }) {
 

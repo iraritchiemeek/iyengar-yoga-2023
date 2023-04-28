@@ -1,0 +1,87 @@
+fragment QuoteFragment on ComponentTextQuote {
+  id
+  Quote
+  Author
+}
+
+fragment TextContentFragment on ComponentTextTitleContentContent {
+  id
+  Title
+  center_content
+  main_content
+}
+
+fragment ImagesContentFragment on ComponentImagesImages {
+  id
+  images {
+    data {
+      ...UploadFileAttributesFragment
+    }
+  }
+}
+
+fragment ClassListFragment on ComponentListClassLevelList {
+  id 
+  title 
+  before_list
+  list {
+    data {
+      attributes {
+        title
+        description
+      }
+    }
+  }
+}
+
+fragment TeacherListFragment on ComponentListTeachersList {
+  id 
+  title 
+  before_list
+  list {
+    data {
+      attributes {
+        title
+        description
+        image {
+          data {
+            ...UploadFileAttributesFragment
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment UploadFileAttributesFragment on UploadFileEntity {
+  attributes {
+    width
+    height
+    formats
+    ext
+    size
+    url 
+  }
+}
+
+query GetPage($id: ID) {
+  page(id: $id) {
+    data {
+      id
+      attributes {
+        banner_image {
+          data {
+            ...UploadFileAttributesFragment
+          }
+        }
+        content {
+          ...QuoteFragment
+          ...TextContentFragment
+          ...ImagesContentFragment
+          ...ClassListFragment
+          ...TeacherListFragment
+        }
+      }
+    }
+  }
+}

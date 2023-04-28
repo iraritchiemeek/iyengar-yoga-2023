@@ -19,9 +19,9 @@ function Footer() {
 				    	</Col>
 				    	<Col xs={12} md={6}>
 				    		<p>Our studio is in The Bakehouse, a beautiful historic brick building from 1912. Swan Lane is a walkway between Floriditas on Cuba St and Marion St. The entrance is on the side of the "The Bakehouse", through the stainless steel door, upstairs and to the left. (Above Noble Rot Wine Bar.)</p>
-				    		<p>Email: <Link href="mailto:tessa@wellingtonyoga.co.nz">tessa@wellingtonyoga.co.nz</Link></p>
-				    		<p><Link href="https://www.facebook.com/IyengarYogaCentreWellington/" target="_blank">Facebook</Link></p>
-				    		<p><Link href=" https://www.instagram.com/iyengaryogawellington/" target="_blank">Instagram</Link></p>
+				    		<p>Email: <a href="mailto:tessa@wellingtonyoga.co.nz">tessa@wellingtonyoga.co.nz</a></p>
+				    		<p><a href="https://www.facebook.com/IyengarYogaCentreWellington/" target="_blank">Facebook</a></p>
+				    		<p><a href=" https://www.instagram.com/iyengaryogawellington/" target="_blank">Instagram</a></p>
 				    	</Col>
 				    </Row>
 				  </Col>

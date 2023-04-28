@@ -26,6 +26,7 @@ fragment ClassListFragment on ComponentListClassLevelList {
   before_list
   list {
     data {
+      id
       attributes {
         title
         description
@@ -40,6 +41,7 @@ fragment TeacherListFragment on ComponentListTeachersList {
   before_list
   list {
     data {
+      id
       attributes {
         title
         description

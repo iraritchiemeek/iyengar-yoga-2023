@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
 
 const StickyTopListSection = ({section}) => {
+  console.log(section)
   const [activeSection, setActiveSection] = useState("");
   const componentRef = useRef();
 
@@ -59,21 +60,23 @@ const StickyTopListSection = ({section}) => {
     )
   }
 
+
   const renderListContent = list => {
+    const getImage = item => item.attributes.image && item.attributes.image.data && item.attributes.image.data.attributes.formats.medium
     return (
       list.map(item => {
         console.log(item)
         return (
           <div style={{paddingTop: '10px'}} key={item.id} id={`${convertToSlug(item.attributes.title)}`} className="pb-4">
-{/*            {item.image &&
+            {getImage(item) &&
               <Image
                 className="left"
-                style={{maxHeight: 'unset', objectFit: 'cover', objectPosition: 'center'}}
-                src={images[0].attributes.url}
-                width={images[0].attributes.width}
-                height={images[0].attributes.height}
+                style={{maxHeight: '300px', objectFit: 'contain', objectPosition: 'top', maxWidth: '100%'}}
+                src={getImage(item).url}
+                width={getImage(item).width}
+                height={getImage(item).height}
               />
-            }*/}
+            }
             <h3>{item.attributes.title}</h3>
             <ReactMarkdown>{item.attributes.description}</ReactMarkdown>
           </div>

@@ -126,7 +126,6 @@ function DynamicContent(props) {
   function renderSection(section) {
     switch (section.__typename) {
       case 'ComponentImagesImages':
-        console.log(section)
         return (
           <Row className="image-section">
             {renderImageSection(section.images.data)}
@@ -134,6 +133,7 @@ function DynamicContent(props) {
         )
         break;
       case 'ComponentListClassLevelList':
+      case 'ComponentListTeachersList':
         return (
           <Row>
             <Col></Col>

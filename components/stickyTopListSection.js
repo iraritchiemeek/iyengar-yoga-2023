@@ -2,55 +2,13 @@ import React, { useEffect, useState, useRef } from "react";
 import { Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
+import useStickyActiveHighlighter from "./useStickyActiveHighlighter";
 
 const StickyTopListSection = ({section}) => {
-  console.log(section)
   const [activeSection, setActiveSection] = useState("");
   const componentRef = useRef();
 
   const convertToSlug = string => string.toLowerCase().replace(/[^\w ]+/g, '') .replace(/ +/g, '-')
-
-  const handleScroll = () => {
-    let currentSection = "";
-    section.list.data.forEach((item) => {
-      const slug = convertToSlug(item.attributes.title)
-      const element = document.getElementById(slug);
-      const rect = element.getBoundingClientRect();
-      if (rect.top <= 100 && rect.bottom >= 100) {
-        currentSection = item.id;
-      }
-    });
-    setActiveSection(currentSection);
-  };
-
-  useEffect(() => {
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          window.addEventListener("scroll", handleScroll);
-        } else {
-          window.removeEventListener("scroll", handleScroll);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0,
-    });
-
-    if (componentRef.current) {
-      observer.observe(componentRef.current);
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (componentRef.current) {
-        observer.unobserve(componentRef.current);
-      }
-    };
-  }, [section]);
 
   const renderListNav = list => {
     return (
@@ -59,7 +17,6 @@ const StickyTopListSection = ({section}) => {
       </ul>
     )
   }
-
 
   const renderListContent = list => {
     const getImage = item => item.attributes.image && item.attributes.image.data && item.attributes.image.data.attributes.formats.medium

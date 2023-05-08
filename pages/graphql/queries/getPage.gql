@@ -55,6 +55,25 @@ fragment TeacherListFragment on ComponentListTeachersList {
   }
 }
 
+fragment RetreatListFragment on ComponentListRetreatsList {
+  id 
+  title 
+  before_list
+  list {
+    data {
+      id
+      attributes {
+        title: location
+        images {
+          data {
+            ...UploadFileAttributesFragment
+          }
+        }
+      }
+    }
+  }
+}
+
 fragment UploadFileAttributesFragment on UploadFileEntity {
   attributes {
     width
@@ -82,6 +101,7 @@ query GetPage($id: ID) {
           ...ImagesContentFragment
           ...ClassListFragment
           ...TeacherListFragment
+          ...RetreatListFragment
         }
       }
     }

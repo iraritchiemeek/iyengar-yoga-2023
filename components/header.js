@@ -7,7 +7,6 @@ import Hamburger from 'components/mobileMenu';
 import LogoColorChange from 'components/logoColorChange';
 
 function Header(props) {
-  // const minHeight = 46;
   const minHeight = 10;
   const maxHeight = 55;
   const [showTimetable, setShowTimetable] = useState(false);
@@ -56,14 +55,14 @@ function Header(props) {
                     <li><Link href="/#new-students">New students</Link></li>
                     <li><Link href="/#class-levels">Class levels</Link></li>
                     <li><Link href="/#pricing">Pricing</Link></li>
-                    <li><Link href="#footer">Retreats</Link></li>
+                    <li><Link href="/retreats">Retreats</Link></li>
                   </ul>
                 </Col>
                 <Col>
                   <ul>
                     <li><Link href="/our-studio">Our Studio</Link></li>
                     <li><Link href="/our-studio#teachers">Teachers</Link></li>
-                    <li><Link href="/our-studio#teachers">Why Iyengar yoga</Link></li>
+                    <li><Link href="/our-studio#why-iyengar-yoga">Why Iyengar yoga</Link></li>
                     <li><Link href="#footer">Contact</Link></li>
                   </ul>
                 </Col>

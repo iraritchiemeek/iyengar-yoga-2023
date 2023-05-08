@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import DynamicContent from 'components/dynamicContent'
 import {Container, Row, Col} from 'react-bootstrap';
-import client from "./graphql/apollo-client";
-import GET_PAGE_QUERY from './graphql/queries/getPage.gql';
+import client from "../graphql/apollo-client";
+import GET_PAGE_QUERY from '../graphql/queries/getPage.gql';
 
 export const getStaticProps = async () => {
     const { data } = await client.query({

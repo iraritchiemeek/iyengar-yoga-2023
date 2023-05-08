@@ -4,10 +4,11 @@ const useStickyActiveHighlighter = (sections, contentRef) => {
   const [activeSection, setActiveSection] = useState("");
 
   const handleScroll = () => {
+    console.log(sections)
     let currentSection = "";
     sections.forEach((section, index) => {
       const element = contentRef.current.querySelector(
-        `[data-id="${index}"]`
+        `[data-id="${section.id}"]`
       );
       if (element) {
         const rect = element.getBoundingClientRect();

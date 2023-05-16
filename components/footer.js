@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 function Footer() {
 	return (
-		<footer className="py-5 bg-blue" id="footer">
+		<footer className="bg-blue" id="footer">
 			<Container>
 				<Row>
 				  <Col></Col>

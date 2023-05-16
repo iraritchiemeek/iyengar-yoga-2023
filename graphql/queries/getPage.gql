@@ -9,6 +9,7 @@ fragment TextContentFragment on ComponentTextTitleContentContent {
   Title
   center_content
   main_content
+  slug
 }
 
 fragment ImagesContentFragment on ComponentImagesImages {

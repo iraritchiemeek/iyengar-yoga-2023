@@ -12,6 +12,10 @@ $blue: rgba(119,196,217);
   font-weight: bold;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Moderat', 'Open Sans', sans-serif;

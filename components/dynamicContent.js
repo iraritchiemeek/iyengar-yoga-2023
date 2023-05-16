@@ -9,6 +9,8 @@ function DynamicContent(props) {
 
   const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
+  const convertToSlug = string => string.toLowerCase().replace(/[^\w ]+/g, '') .replace(/ +/g, '-')
+
   function renderImageSection(images) {
     const getImage = index => images[index].attributes.formats.medium
     switch(images.length){
@@ -137,7 +139,7 @@ function DynamicContent(props) {
       case 'ComponentListRetreatsList':
       case 'ComponentListTeachersList':
         return (
-          <Row>
+          <Row id={convertToSlug(section.title)}>
             <Col></Col>
             <Col xs={12} md={8}>
               <Row >
@@ -150,7 +152,7 @@ function DynamicContent(props) {
       case 'ComponentTextQuote':
       case 'ComponentTextTitleContentContent':
         return (
-          <Row>
+          <Row id={section.slug}>
             <Col></Col>
             <Col xs={12} md={8}>
               <Row >

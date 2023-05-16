@@ -52,18 +52,18 @@ function Header(props) {
                 <Col>
                   <ul>
                     <li><Link href="/#">Home</Link></li>
-                    <li><Link href="/#new-students">New students</Link></li>
-                    <li><Link href="/#class-levels">Class levels</Link></li>
-                    <li><Link href="/#pricing">Pricing</Link></li>
-                    <li><Link href="/retreats">Retreats</Link></li>
+                    <li><Link scroll={false} href="/#new-students">New students</Link></li>
+                    <li><Link scroll={false} href="/#class-levels">Class levels</Link></li>
+                    <li><Link scroll={false} href="/#pricing">Pricing</Link></li>
+                    <li><Link scroll={false} href="/retreats">Retreats</Link></li>
                   </ul>
                 </Col>
                 <Col>
                   <ul>
                     <li><Link href="/our-studio">Our Studio</Link></li>
-                    <li><Link href="/our-studio#teachers">Teachers</Link></li>
-                    <li><Link href="/our-studio#why-iyengar-yoga">Why Iyengar yoga</Link></li>
-                    <li><Link href="#footer">Contact</Link></li>
+                    <li><Link scroll={false} href="/our-studio#our-teachers">Teachers</Link></li>
+                    <li><Link scroll={false} href="/our-studio#why-iyengar">Why Iyengar yoga</Link></li>
+                    <li><Link scroll={false} href="#footer">Contact</Link></li>
                   </ul>
                 </Col>
                 <Col>

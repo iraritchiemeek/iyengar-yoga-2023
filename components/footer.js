@@ -25,8 +25,23 @@ function Footer() {
 				    	</Col>
 				    </Row>
 				  </Col>
-				  <Col></Col>
+				  <Col>
+				  </Col>
 				</Row>
+				<Row>
+				  <Col></Col>
+				  <Col xs={12} md={8}>
+				    <Row>
+				    	<Col xs={12} md={3}></Col>
+				    	<Col xs={12} md={9} style={{position: 'relative', height: '500px'}}>
+				    		<Image src="/map.svg" alt="map" fill />
+				    	</Col>
+				    </Row>
+				  </Col>
+				  <Col>
+				  </Col>
+				</Row>
+				<p>© Copyright Tessa Meek {new Date().getFullYear()}. All rights reserved.</p>
 			</Container>
 		</footer>
 	)

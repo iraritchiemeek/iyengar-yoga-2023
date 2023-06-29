@@ -40,7 +40,11 @@ function Header(props) {
       <Container>
         <Row className={`${props.headerMinified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
           <Col xs={8} md={4}>
-            <LogoColorChange />
+            <div className="fixed-logo">
+              <Link className="logo" id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
+              <Link className="logo" id="logo-overlay" href="/">Iyengar Yoga Centre</Link>
+            </div>
+            {/*<LogoColorChange />*/}
           </Col>
           <Col className="d-none d-md-block" />
           <Col className="d-md-none">

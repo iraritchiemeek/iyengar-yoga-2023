@@ -30,7 +30,7 @@ const StickyTopListSection = ({section}) => {
           <div style={{paddingTop: '10px'}} key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`} className="pb-4">
             {getImage(item) &&
               <Image
-                className="left"
+                className="left mb-3"
                 style={{maxHeight: '300px', objectFit: 'contain', objectPosition: 'top', maxWidth: '100%'}}
                 src={getImage(item).url}
                 width={getImage(item).width}

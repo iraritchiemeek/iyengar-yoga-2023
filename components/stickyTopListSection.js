@@ -48,10 +48,10 @@ const StickyTopListSection = ({section}) => {
   return (
     <>
       <Col xs={12} md={3} >
-        <h2 className="sticky-top">{section.title}</h2>
+        <h2 className="sticky-md-top">{section.title}</h2>
       </Col>
       <Col xs={12} md={3}>
-        <div className="sticky-top">{renderListNav(section.list.data)}</div>
+        <div className="sticky-md-top">{renderListNav(section.list.data)}</div>
       </Col>
       <Col xs={12} md={6} ref={contentRef}>
         {renderListContent(section.list.data)}

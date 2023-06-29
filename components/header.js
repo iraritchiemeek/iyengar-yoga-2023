@@ -55,7 +55,8 @@ function Header(props) {
                     <li><Link scroll={false} href="/#new-students">New students</Link></li>
                     <li><Link scroll={false} href="/#class-levels">Class levels</Link></li>
                     <li><Link scroll={false} href="/#pricing">Pricing</Link></li>
-                    <li><Link scroll={false} href="/retreats">Retreats</Link></li>
+                    <li><Link scroll={false} href="/#attending">Attending class</Link></li>
+                    {/*<li><Link href="/retreats">Retreats</Link></li>*/}
                   </ul>
                 </Col>
                 <Col>

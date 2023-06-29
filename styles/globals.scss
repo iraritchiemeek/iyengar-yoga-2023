@@ -76,7 +76,7 @@ a {
       opacity: 0;
     }
     nav ul li.fw-bold {
-      color: $blue;
+      // color: $blue;
     }
     padding-top: 10px;
     &>div {
@@ -213,11 +213,15 @@ ul {
     &.image-section {
       padding-top: 12em;
       padding-bottom: 12em;
+      @media (max-width: 767px) {
+        padding-top: 2em;
+        padding-bottom: 2em;
+      }
     }
   }
 }
 
-.sticky-top {
+.sticky-md-top {
   top: 10px; //minified header height
   // z-index: 2;
 }
@@ -230,19 +234,19 @@ ul {
   cursor: pointer;
   &.open {
     .line1 {
-      transform: translateY(2px) rotate(0deg) scale(0.7, 1);
+      transform: rotate(45deg);
+      position: relative;
+      top: 11px;
     }
 
     .line2 {
-      transform: translateY(-1px) scale(1, 0.6) rotate(90deg);
+      opacity: 0;
     }
 
     .line3 {
-      transform: translate(-6px, 7px) rotate(-45deg) scale(0.4, 1);
-    }
-
-    .line4 {
-      transform: translate(6px, -1px) rotate(45deg) scale(0.4, 1);
+      transform: rotate(-45deg);
+      position: relative;
+      top: -12px;
     }
   }
   width: 40px;
@@ -276,4 +280,5 @@ ul {
 
 footer {
   padding: 12em 0;
+  margin-top: 6rem;
 }

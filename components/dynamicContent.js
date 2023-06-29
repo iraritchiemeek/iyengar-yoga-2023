@@ -106,8 +106,8 @@ function DynamicContent(props) {
       case 'ComponentTextTitleContentContent':
         return (
           <>
-            <Col xs={12} md={3} ><h2 className="sticky-top">{section.Title}</h2></Col>
-            <Col xs={12} md={3} ><ReactMarkdown className="sticky-top">{section.center_content}</ReactMarkdown></Col>
+            <Col xs={12} md={3} ><h2 className="sticky-md-top">{section.Title}</h2></Col>
+            <Col xs={12} md={3} ><ReactMarkdown className="sticky-md-top">{section.center_content}</ReactMarkdown></Col>
             <Col xs={12} md={6}><ReactMarkdown>{section.main_content}</ReactMarkdown></Col>
           </>
         )
@@ -126,7 +126,6 @@ function DynamicContent(props) {
   }
 
   function renderSection(section) {
-    console.log(section)
     switch (section.__typename) {
       case 'ComponentImagesImages':
         return (

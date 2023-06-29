@@ -34,14 +34,14 @@ a {
 #header {
   position: fixed;
   width: 100%;
-  z-index: 3;
-  @media (max-width: 767px) {
+  z-index: 1030;
+  @media (max-width: 1200px) {
     background-color: white;
   }
 }
 
 #header-row {
-  @media (max-width: 767px) {
+  @media (max-width: 1200px) {
     .nav-wrapper {
       height: 0;
       visibility: hidden;
@@ -81,7 +81,7 @@ a {
     padding-top: 10px;
     &>div {
       height: 25px;
-      @media (max-width: 767px) {
+      @media (max-width: 1200px) {
         &:last-child {
           height: 0;
         }
@@ -146,7 +146,7 @@ h3 {
 }
 
 #bg-grid {
-  @media (max-width: 767px) {
+  @media (max-width: 1200px) {
     display: none;
   }
   top: 50%;
@@ -192,7 +192,7 @@ h3 {
   &.left {
     object-position: left;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 1200px) {
     object-position: center;
   }
   max-width: 100%;
@@ -213,7 +213,7 @@ ul {
     &.image-section {
       padding-top: 12em;
       padding-bottom: 12em;
-      @media (max-width: 767px) {
+      @media (max-width: 1200px) {
         padding-top: 2em;
         padding-bottom: 2em;
       }
@@ -222,12 +222,15 @@ ul {
 }
 
 .sticky-md-top {
-  top: 10px; //minified header height
+  @media (max-width: 1200px) and (min-width: 768px) {
+    top: 40px; //minified header height
+  }
+  top: 10px;
   // z-index: 2;
 }
 
 .hamburger-menu {
-  @media (min-width: 767px) {
+  @media (min-width: 1200px) {
     display: none;
   }
   position: relative;
@@ -282,3 +285,5 @@ footer {
   padding: 12em 0;
   margin-top: 6rem;
 }
+
+

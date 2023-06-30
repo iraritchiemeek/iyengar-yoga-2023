@@ -8,6 +8,7 @@ import ScrollProgressBar from 'components/scrollProgressBar'
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { useRouter } from 'next/router'
 import { Analytics } from '@vercel/analytics/react';
+import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
   const [headerHeight, setHeaderHeight] = useState(55);
@@ -15,6 +16,10 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
 
   return (
+    <>
+    <Head>
+      <title>Iyengar Yoga Centre</title>
+    </Head>
     <ParallaxProvider>
       {router.asPath != '/timetable' &&
         <BgGrid />
@@ -27,5 +32,6 @@ export default function App({ Component, pageProps }) {
       <Footer />
       <Analytics />
     </ParallaxProvider>
+    </>
   )
 }

@@ -15,7 +15,6 @@ export const getStaticProps = async () => {
       },
    };
 }
-
 export default function HomePage({ page }) {
   
   const banner_image = page.banner_image.data.attributes

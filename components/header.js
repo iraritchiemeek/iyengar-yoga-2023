@@ -39,15 +39,15 @@ function Header(props) {
     <header id="header">
       <Container>
         <Row className={`${props.headerMinified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
-          <Col xs={8} md={4}>
+          <Col xs={8} md={2}>
             <div className="fixed-logo">
               <Link className="logo" id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
               <Link className="logo" id="logo-overlay" href="/">Iyengar Yoga Centre</Link>
             </div>
             {/*<LogoColorChange />*/}
           </Col>
-          <Col className="d-none d-md-block" />
-          <Col className="d-md-none">
+          <Col className="d-none d-md-block" style={{pointerEvents: 'none'}} />
+          <Col className="hamburger-container col-4">
             <Hamburger mobileToggled={mobileToggled} setMobileToggled={setMobileToggled} />
           </Col>
           <Col xs={12} md={6} className={`nav-wrapper ${mobileToggled ? 'mobile-toggled' : ''}`}>

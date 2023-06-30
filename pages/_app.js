@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
     <Head>
-      <title>Iyengar Yoga Centre</title>
+      <title>Iyengar Yoga Centre of Wellington</title>
     </Head>
     <ParallaxProvider>
       {router.asPath != '/timetable' &&

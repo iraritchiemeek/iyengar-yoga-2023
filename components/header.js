@@ -41,8 +41,8 @@ function Header(props) {
         <Row className={`${props.headerMinified ? '' : 'minified'}`} id="header-row" style={{paddingBottom: props.headerHeight}}>
           <Col xs={8} md={2}>
             <div className="fixed-logo">
-              <Link className="logo" id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
-              <Link className="logo" id="logo-overlay" href="/">Iyengar Yoga Centre</Link>
+              <Link onClick={() => setMobileToggled(false)} className="logo" id="logo" href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
+              <Link onClick={() => setMobileToggled(false)} className="logo" id="logo-overlay" href="/">Iyengar Yoga Centre</Link>
             </div>
             {/*<LogoColorChange />*/}
           </Col>
@@ -55,25 +55,25 @@ function Header(props) {
               <Row>
                 <Col>
                   <ul>
-                    <li><Link href="/#">Home</Link></li>
-                    <li><Link scroll={false} href="/#new-students">New students</Link></li>
-                    <li><Link scroll={false} href="/#class-descriptions">Class descriptions</Link></li>
-                    <li><Link scroll={false} href="/#pricing">Booking and pricing</Link></li>
-                    <li><Link scroll={false} href="/#attending">Attending class</Link></li>
-                    {/*<li><Link href="/retreats">Retreats</Link></li>*/}
+                    <li><Link onClick={() => setMobileToggled(false)} href="/#">Home</Link></li>
+                    <li><Link onClick={() => setMobileToggled(false)} scroll={false} href="/#new-students">New students</Link></li>
+                    <li><Link onClick={() => setMobileToggled(false)} scroll={false} href="/#class-descriptions">Class descriptions</Link></li>
+                    <li><Link onClick={() => setMobileToggled(false)} scroll={false} href="/#pricing">Booking and pricing</Link></li>
+                    <li><Link onClick={() => setMobileToggled(false)} scroll={false} href="/#attending">Attending class</Link></li>
+                    {/*<li><Link onClick={() => setMobileToggled(false)} href="/retreats">Retreats</Link></li>*/}
                   </ul>
                 </Col>
                 <Col>
                   <ul>
-                    <li><Link href="/our-studio">Our studio</Link></li>
-                    <li><Link scroll={false} href="/our-studio#our-teachers">Our teachers</Link></li>
-                    <li><Link scroll={false} href="/our-studio#why-iyengar">Why Iyengar yoga?</Link></li>
-                    <li><Link scroll={false} href="#footer">Contact</Link></li>
+                    <li><Link onClick={() => setMobileToggled(false)} href="/our-studio">Our studio</Link></li>
+                    <li><Link onClick={() => setMobileToggled(false)} scroll={false} href="/our-studio#our-teachers">Our teachers</Link></li>
+                    <li><Link onClick={() => setMobileToggled(false)} scroll={false} href="/our-studio#why-iyengar">Why Iyengar yoga?</Link></li>
+                    <li><Link onClick={() => setMobileToggled(false)} scroll={false} href="#footer">Contact</Link></li>
                   </ul>
                 </Col>
                 <Col>
                   <ul>
-                    <li className="fw-bold"><Link href="/timetable">Timetable</Link></li>
+                    <li className="fw-bold"><Link onClick={() => setMobileToggled(false)} href="/timetable">Timetable</Link></li>
                   </ul>
                 </Col>
               </Row>

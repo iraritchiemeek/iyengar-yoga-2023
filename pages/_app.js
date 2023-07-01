@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
     <Head>
-      <title>Iyengar Yoga Centre of Wellington</title>
+      <title>Iyengar Yoga Centre, Wellington, New Zealand</title>
       <meta name='description' content="Our beautiful studio is fully equipped for yoga and offers a range of classes suitable for absolute beginners through to experienced practitioners" />
     </Head>
     <ParallaxProvider>

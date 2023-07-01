@@ -26,7 +26,6 @@ export default function HomePage({ page }) {
         <Image
           className="banner-image"
           src={banner_image.url}
-          style={{objectFit: 'cover', height: '720px', minWidth: '100%'}}
           width={banner_image.width}
           height={banner_image.height}
           priority

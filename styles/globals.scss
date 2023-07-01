@@ -40,6 +40,16 @@ a {
   }
 }
 
+.banner-image {
+  object-fit: cover;
+  height: 720px;
+  max-width: 100%;
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 240px;
+  }
+}
+
 #header-row {
   @media (max-width: 1200px) {
     .nav-wrapper {

@@ -19,8 +19,7 @@ export default function App({ Component, pageProps }) {
     <>
     <Head>
       <title>Iyengar Yoga Centre of Wellington</title>
-      <description>Our beautiful studio is fully equipped for yoga and offers a range of classes suitable for absolute beginners through to experienced practitioners.</description>
-      <link rel="shortcut icon" href="/favicon.ico" />
+      <meta name='description' content="Our beautiful studio is fully equipped for yoga and offers a range of classes suitable for absolute beginners through to experienced practitioners" />
     </Head>
     <ParallaxProvider>
       {router.asPath != '/timetable' &&

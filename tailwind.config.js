@@ -9,6 +9,16 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      // padding: '.5em',
+      screens: {
+        'sm': '100%',
+        'md': '100%',
+        'lg': '1200px',
+        'xl': '1400px',
+        '2xl': '1600px',
+      }
+    },
     extend: {
       colors: {
         'yoga-blue': 'rgba(119,196,217)',

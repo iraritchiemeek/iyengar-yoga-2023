@@ -1,7 +1,7 @@
 function BgGrid() {
 
   return (
-    <div className="fixed h-full w-full">
+    <div className="fixed h-full w-full pointer-events-none invisible md:visible">
       <div className="container mx-auto h-full">
       	<div className="grid w-full h-full grid-cols-6 z-10">
           {Array.from({ length: 6 }, (_, index) => (

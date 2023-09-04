@@ -94,9 +94,9 @@ function DynamicContent(props) {
       case 'ComponentTextTitleContentContent':
         return (
           <>
-            <div xs={12} md={3} ><h2 className="sticky-md-top">{section.Title}</h2></div>
-            <div xs={12} md={3} ><ReactMarkdown className="sticky-md-top">{section.center_content}</ReactMarkdown></div>
-            <div xs={12} md={6}><ReactMarkdown>{section.main_content}</ReactMarkdown></div>
+            <div className='lg:col-start-2 font-extrabold text-xl'><h2 className="sticky-md-top">{section.Title}</h2></div>
+            <div className='md:col-span-2 lg:col-span-1'><ReactMarkdown className="sticky-md-top">{section.center_content}</ReactMarkdown></div>
+            <div className='md:col-span-3 lg:col-span-2'><ReactMarkdown>{section.main_content}</ReactMarkdown></div>
           </>
         )
         break;
@@ -139,14 +139,8 @@ function DynamicContent(props) {
       case 'ComponentTextQuote':
       case 'ComponentTextTitleContentContent':
         return (
-          <div id={section.slug}>
-            <div></div>
-            <div xs={12} md={8}>
-              <div >
-                {renderTextSection(section)}
-              </div>
-            </div>
-            <div></div>
+          <div id={section.slug} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 py-[2em] md:pt-[7em]'>
+            {renderTextSection(section)}
           </div>
         )
         break;

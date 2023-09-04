@@ -1,9 +1,7 @@
-import {Container, Row, Col} from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
 import StickyTopListSection from 'components/stickyTopListSection'
 import Link from 'next/link';
-import { Parallax } from 'react-scroll-parallax';
 
 function DynamicContent(props) {
 
@@ -18,12 +16,12 @@ function DynamicContent(props) {
         return (
           <Col>
             <Image
-              className="left"
-              style={{maxHeight: 'unset', objectFit: 'cover', objectPosition: 'center'}}
-              src={images[0].attributes.url}
-              width={images[0].attributes.width}
-              height={images[0].attributes.height}
-            />
+            className="left"
+            style={{maxHeight: 'unset', objectFit: 'cover', objectPosition: 'center'}}
+            src={images[0].attributes.url}
+            width={images[0].attributes.width}
+            height={images[0].attributes.height}
+          />
           </Col>
         )
         break
@@ -31,24 +29,20 @@ function DynamicContent(props) {
         return(
           <>
             <Col xs={12} md={6}>
-              <Parallax speed={getRandomNumber(-10, 10)}>
-                <Image
-                  className="left"
-                  src={getImage(0).url}
-                  width={getImage(0).width}
-                  height={getImage(0).height}
-                />
-              </Parallax>
+              <Image
+                className="left"
+                src={getImage(0).url}
+                width={getImage(0).width}
+                height={getImage(0).height}
+              />
             </Col>
             <Col></Col>
             <Col xs={12} md={4}>
-              <Parallax speed={getRandomNumber(-10, 10)}>
-                <Image
-                  src={getImage(1).url}
-                  width={getImage(1).width}
-                  height={getImage(1).height}
-                />
-              </Parallax>
+              <Image
+                src={getImage(1).url}
+                width={getImage(1).width}
+                height={getImage(1).height}
+              />
             </Col>
           </>
         )
@@ -59,38 +53,32 @@ function DynamicContent(props) {
             <Col xs={12} md={6} className="d-flex flex-wrap">
               <Row>
                 <Col xs={12}>
-                  <Parallax speed={getRandomNumber(-10, 10)}>
-                    <Image
-                      className="left"
-                      src={getImage(0).url}
-                      width={getImage(0).width}
-                      height={getImage(0).height}
-                    />
-                  </Parallax>
+                  <Image
+                    className="left"
+                    src={getImage(0).url}
+                    width={getImage(0).width}
+                    height={getImage(0).height}
+                  />
                 </Col>
                 <Col/>
                 <Col xs={12} md={8}>
-                  <Parallax speed={getRandomNumber(-10, 10)}>
-                    <Image
-                      className="left"
-                      className="mt-4"
-                      src={getImage(1).url}
-                      width={getImage(1).width}
-                      height={getImage(1).height}
-                    />
-                  </Parallax>
+                  <Image
+                    className="left"
+                    className="mt-4"
+                    src={getImage(1).url}
+                    width={getImage(1).width}
+                    height={getImage(1).height}
+                  />
                 </Col>
               </Row>
             </Col>
             <Col></Col>
             <Col xs={12} md={4} className="d-flex align-items-center">
-              <Parallax speed={getRandomNumber(-10, 10)}>
-                <Image
-                  src={getImage(2).url}
-                  width={getImage(2).width}
-                  height={getImage(2).height}
-                />
-              </Parallax>
+              <Image
+                src={getImage(2).url}
+                width={getImage(2).width}
+                height={getImage(2).height}
+              />
             </Col>
           </>
         )

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState, useRef } from "react";
 import { Col } from "react-bootstrap";
 import ReactMarkdown from 'react-markdown';

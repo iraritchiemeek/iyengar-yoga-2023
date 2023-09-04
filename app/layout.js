@@ -18,9 +18,7 @@ export default function RootLayout({children}) {
         <BgGrid />
         <ScrollProgressBar />
         {/*<Header headerHeight={headerHeight} setHeaderHeight={setHeaderHeight} headerMinified={headerMinified} setHeaderMinified={setHeaderMinified} />*/}
-        <div>
-          {children}
-        </div>
+        {children}
         <Footer />
         <Analytics /> 
       </body>

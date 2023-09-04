@@ -14,54 +14,54 @@ function DynamicContent(props) {
     switch(images.length){
       case 1:
         return (
-          <Col>
+          <div>
             <Image
-            className="left"
-            style={{maxHeight: 'unset', objectFit: 'cover', objectPosition: 'center'}}
-            src={images[0].attributes.url}
-            width={images[0].attributes.width}
-            height={images[0].attributes.height}
-          />
-          </Col>
+              className="left"
+              style={{maxHeight: 'unset', objectFit: 'cover', objectPosition: 'center'}}
+              src={images[0].attributes.url}
+              width={images[0].attributes.width}
+              height={images[0].attributes.height}
+            />
+          </div>
         )
         break
       case 2:
         return(
           <>
-            <Col xs={12} md={6}>
+            <div xs={12} md={6}>
               <Image
                 className="left"
                 src={getImage(0).url}
                 width={getImage(0).width}
                 height={getImage(0).height}
               />
-            </Col>
-            <Col></Col>
-            <Col xs={12} md={4}>
+            </div>
+            <div></div>
+            <div xs={12} md={4}>
               <Image
                 src={getImage(1).url}
                 width={getImage(1).width}
                 height={getImage(1).height}
               />
-            </Col>
+            </div>
           </>
         )
         break;
       case 3:
         return (
           <>
-            <Col xs={12} md={6} className="d-flex flex-wrap">
-              <Row>
-                <Col xs={12}>
+            <div xs={12} md={6} className="d-flex flex-wrap">
+              <div>
+                <div xs={12}>
                   <Image
                     className="left"
                     src={getImage(0).url}
                     width={getImage(0).width}
                     height={getImage(0).height}
                   />
-                </Col>
-                <Col/>
-                <Col xs={12} md={8}>
+                </div>
+                <div/>
+                <div xs={12} md={8}>
                   <Image
                     className="left"
                     className="mt-4"
@@ -69,17 +69,17 @@ function DynamicContent(props) {
                     width={getImage(1).width}
                     height={getImage(1).height}
                   />
-                </Col>
-              </Row>
-            </Col>
-            <Col></Col>
-            <Col xs={12} md={4} className="d-flex align-items-center">
+                </div>
+              </div>
+            </div>
+            <div></div>
+            <div xs={12} md={4} className="d-flex align-items-center">
               <Image
                 src={getImage(2).url}
                 width={getImage(2).width}
                 height={getImage(2).height}
               />
-            </Col>
+            </div>
           </>
         )
         break;
@@ -94,18 +94,18 @@ function DynamicContent(props) {
       case 'ComponentTextTitleContentContent':
         return (
           <>
-            <Col xs={12} md={3} ><h2 className="sticky-md-top">{section.Title}</h2></Col>
-            <Col xs={12} md={3} ><ReactMarkdown className="sticky-md-top">{section.center_content}</ReactMarkdown></Col>
-            <Col xs={12} md={6}><ReactMarkdown>{section.main_content}</ReactMarkdown></Col>
+            <div xs={12} md={3} ><h2 className="sticky-md-top">{section.Title}</h2></div>
+            <div xs={12} md={3} ><ReactMarkdown className="sticky-md-top">{section.center_content}</ReactMarkdown></div>
+            <div xs={12} md={6}><ReactMarkdown>{section.main_content}</ReactMarkdown></div>
           </>
         )
         break;
       case 'ComponentTextQuote':
         return (
-          <Col>
+          <div>
             <p className="quote">“{section.Quote}”</p>
             <p className="quote-author">- {section.Author}</p>
-          </Col>
+          </div>
         )
         break;
       default:
@@ -117,37 +117,37 @@ function DynamicContent(props) {
     switch (section.__typename) {
       case 'ComponentImagesImages':
         return (
-          <Row className="image-section">
+          <div className="image-section">
             {renderImageSection(section.images.data)}
-          </Row>
+          </div>
         )
         break;
       case 'ComponentListClassLevelList':
       case 'ComponentListRetreatsList':
       case 'ComponentListTeachersList':
         return (
-          <Row id={convertToSlug(section.title)}>
-            <Col></Col>
-            <Col xs={12} md={8}>
-              <Row >
+          <div id={convertToSlug(section.title)}>
+            <div></div>
+            <div xs={12} md={8}>
+              <div >
                 <StickyTopListSection section={section} />
-              </Row>
-            </Col>
-            <Col></Col>
-          </Row>
+              </div>
+            </div>
+            <div></div>
+          </div>
         )
       case 'ComponentTextQuote':
       case 'ComponentTextTitleContentContent':
         return (
-          <Row id={section.slug}>
-            <Col></Col>
-            <Col xs={12} md={8}>
-              <Row >
+          <div id={section.slug}>
+            <div></div>
+            <div xs={12} md={8}>
+              <div >
                 {renderTextSection(section)}
-              </Row>
-            </Col>
-            <Col></Col>
-          </Row>
+              </div>
+            </div>
+            <div></div>
+          </div>
         )
         break;
       default:

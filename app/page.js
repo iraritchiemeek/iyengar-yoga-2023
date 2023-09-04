@@ -1,5 +1,5 @@
 import Image from 'next/image'
-// import DynamicContent from 'components/dynamicContent'
+import DynamicContent from 'components/dynamicContent'
 import client from "../graphql/apollo-client";
 import GET_PAGE_QUERY from '../graphql/queries/getPage.gql';
 
@@ -33,8 +33,8 @@ export default async function HomePage() {
           priority
         />
       </div>
-      <div className="dynamic-content container mx-auto">
-        {/*{page.content.map(section => <DynamicContent section={section} />)}*/}
+      <div className="container mx-auto">
+        {page.content.map(section => <DynamicContent section={section} />)}
       </div>
     </main>
   );

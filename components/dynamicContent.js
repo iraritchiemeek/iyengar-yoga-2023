@@ -95,8 +95,18 @@ function DynamicContent(props) {
         return (
           <>
             <div className='lg:col-start-2 font-extrabold text-xl'><h2 className="sticky-md-top">{section.Title}</h2></div>
-            <div className='md:col-span-2 lg:col-span-1'><ReactMarkdown className="sticky-md-top">{section.center_content}</ReactMarkdown></div>
-            <div className='md:col-span-3 lg:col-span-2'><ReactMarkdown>{section.main_content}</ReactMarkdown></div>
+            <div className='md:col-span-2 lg:col-span-1'>
+              <ReactMarkdown
+                components={{p: ({node, ...props}) => <p className='mb-3' {...props} /> }}
+                children={section.center_content}
+              />
+            </div>
+            <div className='md:col-span-3 lg:col-span-2'>
+              <ReactMarkdown
+                components={{p: ({node, ...props}) => <p className='mb-4' {...props} /> }}
+                children={section.main_content}
+              />
+            </div>
           </>
         )
         break;

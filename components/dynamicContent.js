@@ -5,18 +5,17 @@ import Link from 'next/link';
 
 function DynamicContent(props) {
 
-  const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
-
   const convertToSlug = string => string.toLowerCase().replace(/[^\w ]+/g, '') .replace(/ +/g, '-')
 
   function renderImageSection(images) {
-    const getImage = index => images[index].attributes.formats.medium
+    const getImage = index => images[index].attributes.formats.large
     switch(images.length){
       case 1:
         return (
           <div>
             <Image
               className="left"
+              alt=""
               style={{maxHeight: 'unset', objectFit: 'cover', objectPosition: 'center'}}
               src={images[0].attributes.url}
               width={images[0].attributes.width}
@@ -31,6 +30,7 @@ function DynamicContent(props) {
             <div xs={12} md={6}>
               <Image
                 className="left"
+                alt=""
                 src={getImage(0).url}
                 width={getImage(0).width}
                 height={getImage(0).height}
@@ -40,6 +40,7 @@ function DynamicContent(props) {
             <div xs={12} md={4}>
               <Image
                 src={getImage(1).url}
+                alt=""
                 width={getImage(1).width}
                 height={getImage(1).height}
               />
@@ -50,36 +51,27 @@ function DynamicContent(props) {
       case 3:
         return (
           <>
-            <div xs={12} md={6} className="d-flex flex-wrap">
-              <div>
-                <div xs={12}>
-                  <Image
-                    className="left"
-                    src={getImage(0).url}
-                    width={getImage(0).width}
-                    height={getImage(0).height}
-                  />
-                </div>
-                <div/>
-                <div xs={12} md={8}>
-                  <Image
-                    className="left"
-                    className="mt-4"
-                    src={getImage(1).url}
-                    width={getImage(1).width}
-                    height={getImage(1).height}
-                  />
-                </div>
-              </div>
-            </div>
-            <div></div>
-            <div xs={12} md={4} className="d-flex align-items-center">
-              <Image
-                src={getImage(2).url}
-                width={getImage(2).width}
-                height={getImage(2).height}
-              />
-            </div>
+            <Image
+              className="col-span-3 row-span-3 col"
+              alt=""
+              src={getImage(0).url}
+              width={getImage(0).width}
+              height={getImage(0).height}
+            />
+            <Image
+              alt=""
+              className="col-span-2 col-start-5 row-start-4"
+              src={getImage(1).url}
+              width={getImage(1).width}
+              height={getImage(1).height}
+            />
+            <Image
+              className="col-span-2 col-start-2 row-start-5"
+              alt=""
+              src={getImage(2).url}
+              width={getImage(2).width}
+              height={getImage(2).height}
+            />
           </>
         )
         break;
@@ -127,7 +119,7 @@ function DynamicContent(props) {
     switch (section.__typename) {
       case 'ComponentImagesImages':
         return (
-          <div className="image-section">
+          <div className="grid grid-cols-1 md:grid-rows6 md:grid-cols-6 py-[2em] md:pt-[12em]">
             {renderImageSection(section.images.data)}
           </div>
         )
@@ -149,7 +141,7 @@ function DynamicContent(props) {
       case 'ComponentTextQuote':
       case 'ComponentTextTitleContentContent':
         return (
-          <div id={section.slug} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 py-[2em] md:pt-[7em]'>
+          <div id={section.slug} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 py-[7em]'>
             {renderTextSection(section)}
           </div>
         )

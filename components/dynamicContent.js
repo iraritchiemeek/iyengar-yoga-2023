@@ -2,6 +2,8 @@ import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
 import StickyTopListSection from 'components/stickyTopListSection'
 import Link from 'next/link';
+import { StickyTitle, StyledMarkdown } from './text';
+import { StartContentGridItem, CenterContentGridItem, EndContentGridItem } from './grid';
 
 function DynamicContent(props) {
 
@@ -51,22 +53,23 @@ function DynamicContent(props) {
       case 3:
         return (
           <>
+            <div className="md:col-span-3 md:row-span-3 md:row-end-3">
+              <Image
+                alt=""
+                src={getImage(0).url}
+                width={getImage(0).width}
+                height={getImage(0).height}
+              />
+            </div>
             <Image
-              className="col-span-3 row-span-3 col"
               alt=""
-              src={getImage(0).url}
-              width={getImage(0).width}
-              height={getImage(0).height}
-            />
-            <Image
-              alt=""
-              className="col-span-2 col-start-5 row-start-4"
+              className="md:col-span-2 md:col-start-5 md:row-span-2 md:row-start-2"
               src={getImage(1).url}
               width={getImage(1).width}
               height={getImage(1).height}
             />
             <Image
-              className="col-span-2 col-start-2 row-start-5"
+              className="md:col-span-2 md:col-start-2 md:row-start-5"
               alt=""
               src={getImage(2).url}
               width={getImage(2).width}
@@ -86,17 +89,18 @@ function DynamicContent(props) {
       case 'ComponentTextTitleContentContent':
         return (
           <>
-            <div className='lg:col-start-2 font-extrabold text-xl'><h2 className="sticky-md-top">{section.Title}</h2></div>
-            <div className='md:col-span-2 lg:col-span-1'>
-              <ReactMarkdown
-                components={{p: ({node, ...props}) => <p className='mb-3' {...props} /> }}
-                children={section.center_content}
+            <StartContentGridItem>
+              <StickyTitle>{section.Title}</StickyTitle>
+            </StartContentGridItem>
+            <CenterContentGridItem>
+              <StyledMarkdown 
+                className='sticky top-0'
+                content={section.center_content}
               />
-            </div>
+            </CenterContentGridItem>
             <div className='md:col-span-3 lg:col-span-2'>
-              <ReactMarkdown
-                components={{p: ({node, ...props}) => <p className='mb-4' {...props} /> }}
-                children={section.main_content}
+              <StyledMarkdown
+                content={section.main_content}
               />
             </div>
           </>
@@ -104,9 +108,9 @@ function DynamicContent(props) {
         break;
       case 'ComponentTextQuote':
         return (
-          <div>
-            <p className="quote">“{section.Quote}”</p>
-            <p className="quote-author">- {section.Author}</p>
+          <div className='md:col-span-4 md:col-start-2'>
+            <p className="text-4xl font-bold leading-10">“{section.Quote}”</p>
+            <p className="font-bold text-xl pt-4">- {section.Author}</p>
           </div>
         )
         break;
@@ -119,7 +123,7 @@ function DynamicContent(props) {
     switch (section.__typename) {
       case 'ComponentImagesImages':
         return (
-          <div className="grid grid-cols-1 md:grid-rows6 md:grid-cols-6 py-[2em] md:pt-[12em]">
+          <div className="grid grid-cols-1 md:grid-rows6 md:grid-cols-6 [&>*]:px-3 [&>*]:py-3 [&>*]:md:p-0 py-[2em] md:pt-[12em]">
             {renderImageSection(section.images.data)}
           </div>
         )
@@ -128,20 +132,14 @@ function DynamicContent(props) {
       case 'ComponentListRetreatsList':
       case 'ComponentListTeachersList':
         return (
-          <div id={convertToSlug(section.title)}>
-            <div></div>
-            <div xs={12} md={8}>
-              <div >
-                <StickyTopListSection section={section} />
-              </div>
-            </div>
-            <div></div>
+          <div id={convertToSlug(section.title)} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 pt-[7em]'>
+            <StickyTopListSection section={section} />
           </div>
         )
       case 'ComponentTextQuote':
       case 'ComponentTextTitleContentContent':
         return (
-          <div id={section.slug} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 py-[7em]'>
+          <div id={section.slug} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 pt-[7em]'>
             {renderTextSection(section)}
           </div>
         )

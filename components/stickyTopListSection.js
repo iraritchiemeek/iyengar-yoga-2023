@@ -1,12 +1,13 @@
 'use client'
 
-import React, { useEffect, useState, useRef } from "react";
-import { Col } from "react-bootstrap";
+import React, { useRef } from "react";
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
 import useStickyActiveHighlighter from "./useStickyActiveHighlighter";
+import { StickyTitle, StyledMarkdown } from './text';
+import { StartContentGridItem, CenterContentGridItem, EndContentGridItem } from './grid';
 
-const StickyTopListSection = ({section}) => {
+function StickyTopListSection({section}) {
   const contentRef = useRef();
 
   const activeSection = useStickyActiveHighlighter(
@@ -29,18 +30,18 @@ const StickyTopListSection = ({section}) => {
     return (
       list.map(item => {
         return (
-          <div style={{paddingTop: '10px'}} key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`} className="pb-4">
+          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`}>
             {getImage(item) &&
               <Image
-                className="left mb-3"
-                style={{maxHeight: '300px', objectFit: 'contain', objectPosition: 'top', maxWidth: '100%'}}
+                className="mb-3"
+                // style={{maxHeight: '300px', objectFit: 'contain', objectPosition: 'top', maxWidth: '100%'}}
                 src={getImage(item).url}
                 width={getImage(item).width}
                 height={getImage(item).height}
               />
             }
-            <h3>{item.attributes.title}</h3>
-            <ReactMarkdown>{item.attributes.description}</ReactMarkdown>
+            <h3 className="font-bold">{item.attributes.title}</h3>
+            <StyledMarkdown content={item.attributes.description} />
           </div>
         )
       })
@@ -49,15 +50,17 @@ const StickyTopListSection = ({section}) => {
 
   return (
     <>
-      <Col xs={12} md={3} >
-        <h2 className="sticky-md-top">{section.title}</h2>
-      </Col>
-      <Col xs={12} md={3}>
-        <div className="sticky-md-top">{renderListNav(section.list.data)}</div>
-      </Col>
-      <Col xs={12} md={6} ref={contentRef}>
-        {renderListContent(section.list.data)}
-      </Col>
+      <StartContentGridItem>
+        <StickyTitle>{section.title}</StickyTitle>
+      </StartContentGridItem>
+      <CenterContentGridItem>
+        <div className="sticky top-0">{renderListNav(section.list.data)}</div>
+      </CenterContentGridItem>
+      <EndContentGridItem>
+        <div ref={contentRef}>
+          {renderListContent(section.list.data)}
+        </div>
+      </EndContentGridItem>
     </>
   );
 };

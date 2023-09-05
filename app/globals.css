@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-grid {
-	
+html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
 }

@@ -29,38 +29,33 @@ function DynamicContent(props) {
       case 2:
         return(
           <>
-            <div xs={12} md={6}>
-              <Image
-                className="left"
-                alt=""
-                src={getImage(0).url}
-                width={getImage(0).width}
-                height={getImage(0).height}
-              />
-            </div>
-            <div></div>
-            <div xs={12} md={4}>
-              <Image
-                src={getImage(1).url}
-                alt=""
-                width={getImage(1).width}
-                height={getImage(1).height}
-              />
-            </div>
+            <Image
+              className='md:col-span-3 md:row-span-6'
+              alt=""
+              src={getImage(0).url}
+              width={getImage(0).width}
+              height={getImage(0).height}
+            />
+            <Image
+              className='md:col-span-2 md:col-start-5 md:row-start-3 md:row-span-3'
+              src={getImage(1).url}
+              alt=""
+              width={getImage(1).width}
+              height={getImage(1).height}
+            />
           </>
         )
         break;
       case 3:
         return (
           <>
-            <div className="md:col-span-3 md:row-span-3 md:row-end-3">
-              <Image
-                alt=""
-                src={getImage(0).url}
-                width={getImage(0).width}
-                height={getImage(0).height}
-              />
-            </div>
+            <Image
+              className="md:col-span-3 md:row-span-3 md:row-end-3"
+              alt=""
+              src={getImage(0).url}
+              width={getImage(0).width}
+              height={getImage(0).height}
+            />
             <Image
               alt=""
               className="md:col-span-2 md:col-start-5 md:row-span-2 md:row-start-2"

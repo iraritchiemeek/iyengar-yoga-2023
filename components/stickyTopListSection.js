@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
 import useStickyActiveHighlighter from "./useStickyActiveHighlighter";
-import { StickyTitle, StyledMarkdown } from './text';
+import { StickyTitle, StyledMarkdown, StyledLink } from './text';
 import { StartContentGridItem, CenterContentGridItem, EndContentGridItem } from './grid';
 
 function StickyTopListSection({section}) {
@@ -20,7 +20,7 @@ function StickyTopListSection({section}) {
   const renderListNav = list => {
     return (
       <ul className="pb-4">
-        {list.map(item => <li key={item.id} data-id={item.id} style={{fontWeight: item.id === activeSection ? "bold" : "normal"}}><a href={`#${convertToSlug(item.attributes.title)}`}>{item.attributes.title}</a></li>)}
+        {list.map(item => <li key={item.id} data-id={item.id} className={item.id === activeSection ? "font-bold" : ""}><StyledLink href={`#${convertToSlug(item.attributes.title)}`}>{item.attributes.title}</StyledLink></li>)}
       </ul>
     )
   }

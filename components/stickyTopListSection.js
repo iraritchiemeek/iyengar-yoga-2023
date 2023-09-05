@@ -30,10 +30,10 @@ function StickyTopListSection({section}) {
     return (
       list.map(item => {
         return (
-          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`}>
+          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`} className="pb-8">
             {getImage(item) &&
               <Image
-                className="mb-3"
+                className="mb-2"
                 // style={{maxHeight: '300px', objectFit: 'contain', objectPosition: 'top', maxWidth: '100%'}}
                 src={getImage(item).url}
                 width={getImage(item).width}

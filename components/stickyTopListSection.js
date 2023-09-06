@@ -54,7 +54,7 @@ function StickyTopListSection({section}) {
         <StickyTitle>{section.title}</StickyTitle>
       </StartContentGridItem>
       <CenterContentGridItem>
-        <div className="sticky top-0">{renderListNav(section.list.data)}</div>
+        <div className="sticky pt-2 top-0">{renderListNav(section.list.data)}</div>
       </CenterContentGridItem>
       <EndContentGridItem>
         <div ref={contentRef}>

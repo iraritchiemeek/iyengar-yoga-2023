@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function StickyTitle({children}) {
 	return (
-		<h2 className='sticky top-0'>{children}</h2>
+		<h2 className='sticky top-0 pt-2'>{children}</h2>
 	)
 }
 

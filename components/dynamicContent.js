@@ -88,7 +88,7 @@ function DynamicContent(props) {
             </StartContentGridItem>
             <CenterContentGridItem>
               <StyledMarkdown 
-                className='sticky top-0'
+                className='sticky top-0 pt-2'
                 content={section.center_content}
               />
             </CenterContentGridItem>

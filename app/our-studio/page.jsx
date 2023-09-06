@@ -10,7 +10,6 @@ async function getData() {
     })
 
     return res.data;
-
 }
 
 export default async function OurStudioPage() {
@@ -22,16 +21,14 @@ export default async function OurStudioPage() {
 
   return (
     <main>
-      <div className="w-100">
-        <Image
-          alt=""
-          className='h-[720px] object-cover'
-          src={banner_image.url}
-          width={banner_image.width}
-          height={banner_image.height}
-          priority
-        />
-      </div>
+      <Image
+        alt=""
+        className='h-[720px] object-cover'
+        src={banner_image.url}
+        width={banner_image.width}
+        height={banner_image.height}
+        priority
+      />
       <div className="container mx-auto">
         {page.content.map(section => <DynamicContent section={section} />)}
       </div>

@@ -20,13 +20,13 @@ export function StyledMarkdown({className, content}) {
 	)
 }
 
-export function StyledLink({ children, href, ...props }) {
+export function StyledLink({ children, href, className='', ...props }) {
   const isExternal = href.startsWith('http://') || href.startsWith('https://');
-  const classes = "underline underline-offset-2 hover:text-yoga-blue transition-colors ease-out duration-100"
+  const defaultClasses = "underline underline-offset-2 hover:text-yoga-blue transition-colors ease-out duration-100"
 
   if (isExternal) {
-    return <a href={href} {...props} className={classes} target="_blank" rel="noopener noreferrer">{children}</a>;
+    return <a href={href} {...props} className={`${defaultClasses} ${className}`} target="_blank" rel="noopener noreferrer">{children}</a>;
   }
 
-  return <Link href={href} className={classes}>{children}</Link>
+  return <Link href={href} className={`${defaultClasses} ${className}`}>{children}</Link>
 }

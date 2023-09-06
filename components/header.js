@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Link from 'next/link';
 import Hamburger from 'components/mobileMenu';
-import LogoColorChange from 'components/logoColorChange';
 
 function Header(props) {
   const minHeight = 10;

@@ -1,7 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
 import StickyTopListSection from 'components/stickyTopListSection'
-import Link from 'next/link';
 import { StickyTitle, StyledMarkdown } from './text';
 import { StartContentGridItem, CenterContentGridItem, EndContentGridItem } from './grid';
 

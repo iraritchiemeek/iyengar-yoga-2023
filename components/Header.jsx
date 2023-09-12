@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link';
 import {StyledLink} from './text'
 
-export default function HeaderNew() {
+export default function Header() {
   const headerRef = useRef(null);
   const [navVisible, setNavVisible] = useState(true)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

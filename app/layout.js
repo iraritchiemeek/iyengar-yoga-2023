@@ -1,6 +1,6 @@
 import './globals.css'
 import BgGrid from 'components/bgGrid'
-import HeaderNew from 'components/HeaderNew'
+import Header from 'components/Header'
 import Footer from 'components/footer'
 import ScrollProgressBar from 'components/scrollProgressBar'
 import { Analytics } from '@vercel/analytics/react';
@@ -31,8 +31,7 @@ export default function RootLayout({children}) {
       <body className={moderat.className}>
         <BgGrid />
         <ScrollProgressBar />
-        <HeaderNew />
-        {/*<Header headerHeight={headerHeight} setHeaderHeight={setHeaderHeight} headerMinified={headerMinified} setHeaderMinified={setHeaderMinified} />*/}
+        <Header />
         {children}
         <Footer />
         <Analytics /> 

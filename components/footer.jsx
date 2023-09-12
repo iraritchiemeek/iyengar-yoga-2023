@@ -11,7 +11,7 @@ function Footer() {
 						<h2>Contact</h2>
 					</StartContentGridItem>
 					<CenterContentGridItem>
-						<h2 className='text-xl font-bold pb-2'>Iyengar Yoga Centre</h2>
+						<h2 className='text-xl pb-2'>Iyengar Yoga Centre</h2>
 						<a className='underline' href='https://goo.gl/maps/UCfiqUtjkZNVWfFr5' target="_blank"><p>The Bakehouse<br/>6 Swan Lane<br/>Te Aro<br/>Wellington<br/>New Zealand</p></a>
 					</CenterContentGridItem>
 					<EndContentGridItem>

@@ -49,7 +49,7 @@ function DynamicContent(props) {
         return (
           <>
             <Image
-              className="md:col-span-3 md:row-span-3 md:row-end-3"
+              className="md:col-span-3 md:row-span-2 md:row-end-3"
               alt=""
               src={getImage(0).url}
               width={getImage(0).width}
@@ -57,13 +57,13 @@ function DynamicContent(props) {
             />
             <Image
               alt=""
-              className="md:col-span-2 md:col-start-5 md:row-span-2 md:row-start-2"
+              className="md:col-span-2 md:col-start-5 md:row-span-2 md:row-start-3"
               src={getImage(1).url}
               width={getImage(1).width}
               height={getImage(1).height}
             />
             <Image
-              className="md:col-span-2 md:col-start-2 md:row-start-5"
+              className="md:col-span-2 md:col-start-2 md:row-start-4 md:row-span-2"
               alt=""
               src={getImage(2).url}
               width={getImage(2).width}
@@ -117,7 +117,7 @@ function DynamicContent(props) {
     switch (section.__typename) {
       case 'ComponentImagesImages':
         return (
-          <div className="grid grid-cols-1 md:grid-rows6 md:grid-cols-6 [&>*]:px-3 [&>*]:py-3 [&>*]:md:p-0 py-[2em] md:pt-[12em]">
+          <div className="grid grid-cols-1 md:grid-rows-6 md:grid-cols-6 [&>*]:px-3 [&>*]:py-3 [&>*]:md:p-0 py-[2em] md:pt-[12em]">
             {renderImageSection(section.images.data)}
           </div>
         )

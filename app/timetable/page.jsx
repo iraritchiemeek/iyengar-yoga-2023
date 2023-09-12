@@ -18,6 +18,8 @@ export default function HomePage() {
   }, []);
 
   return (
-	  <iframe src={iframeUrl} height="1500" width="100%" frameBorder="0" allowFullScreen></iframe>
+  	<div className='bg-white relative'>
+		  <iframe src={iframeUrl} height="2000" width="100%" frameBorder="0" allowFullScreen></iframe>
+  	</div>
   );
 }

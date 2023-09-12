@@ -1,5 +1,5 @@
 export function StartContentGridItem({ props, children }) {
-  return <div className='md:col-span-1 lg:col-start-2 font-bold text-xl'>{children}</div>
+  return <div className='md:col-span-1 lg:col-start-2 font-bold text-xl snap-start'>{children}</div>
 }
 
 export function CenterContentGridItem({ props, children }) {

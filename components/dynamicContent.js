@@ -48,27 +48,31 @@ function DynamicContent(props) {
       case 3:
         return (
           <>
-            <Image
-              className="md:col-span-3 md:row-span-2 md:row-end-3"
-              alt=""
-              src={getImage(0).url}
-              width={getImage(0).width}
-              height={getImage(0).height}
-            />
-            <Image
-              alt=""
-              className="md:col-span-2 md:col-start-5 md:row-span-2 md:row-start-3"
-              src={getImage(1).url}
-              width={getImage(1).width}
-              height={getImage(1).height}
-            />
-            <Image
-              className="md:col-span-2 md:col-start-2 md:row-start-4 md:row-span-2"
-              alt=""
-              src={getImage(2).url}
-              width={getImage(2).width}
-              height={getImage(2).height}
-            />
+            <div className="grid grid-rows-6 grid-cols-3 md:col-span-3">
+              <Image
+                className="md:row-span-4 md:col-span-3 md:row-span-3"
+                alt=""
+                src={getImage(0).url}
+                width={getImage(0).width}
+                height={getImage(0).height}
+              />
+              <Image
+                className="md:col-span-2 md:col-start-2 md:row-start-5 md:row-span-2" 
+                alt=""
+                src={getImage(2).url}
+                width={getImage(2).width}
+                height={getImage(2).height}
+              />
+            </div>
+            <div className="grid grid-rows-6 grid-cols-3 md:col-span-3">
+              <Image
+                alt=""
+                className="md:col-span-2 md:col-start-2 md:row-start-3 md:row-span-6"
+                src={getImage(1).url}
+                width={getImage(1).width}
+                height={getImage(1).height}
+              />
+            </div>
           </>
         )
         break;
@@ -117,7 +121,7 @@ function DynamicContent(props) {
     switch (section.__typename) {
       case 'ComponentImagesImages':
         return (
-          <div className="grid grid-cols-1 md:grid-rows-6 md:grid-cols-6 [&>*]:px-3 [&>*]:py-3 [&>*]:md:p-0 py-[2em] md:pt-[12em]">
+          <div className="grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 [&>*]:py-3 [&>*]:md:p-0 py-[2em] md:pt-[12em]">
             {renderImageSection(section.images.data)}
           </div>
         )

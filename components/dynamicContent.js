@@ -48,23 +48,23 @@ function DynamicContent(props) {
       case 3:
         return (
           <>
-            <div className="grid grid-rows-6 grid-cols-3 md:col-span-3">
+            <div className="grid grid-cols-1 md:grid-rows-6 md:grid-cols-3 md:col-span-3">
               <Image
-                className="md:row-span-4 md:col-span-3 md:row-span-3"
+                className="md:row-span-4 md:col-span-3 md:row-span-3 p-3 md:p-0"
                 alt=""
                 src={getImage(0).url}
                 width={getImage(0).width}
                 height={getImage(0).height}
               />
               <Image
-                className="md:col-span-2 md:col-start-2 md:row-start-5 md:row-span-2" 
+                className="md:col-span-2 md:col-start-2 md:row-start-5 md:row-span-2 p-3 md:p-0" 
                 alt=""
                 src={getImage(2).url}
                 width={getImage(2).width}
                 height={getImage(2).height}
               />
             </div>
-            <div className="grid grid-rows-6 grid-cols-3 md:col-span-3">
+            <div className="grid md:grid-rows-6 grid-cols-1 md:grid-cols-3 md:col-span-3 p-3 md:p-0">
               <Image
                 alt=""
                 className="md:col-span-2 md:col-start-2 md:row-start-3 md:row-span-6"
@@ -83,8 +83,8 @@ function DynamicContent(props) {
   }
 
   function renderTextSection(section) {
-    switch (section.__typename) {
-      case 'ComponentTextTitleContentContent':
+    switch (section.__component) {
+      case 'text.title-content-content':
         return (
           <>
             <StartContentGridItem>
@@ -104,7 +104,7 @@ function DynamicContent(props) {
           </>
         )
         break;
-      case 'ComponentTextQuote':
+      case 'text.quote':
         return (
           <div className='md:col-span-4 md:col-start-2'>
             <p className="text-4xl font-bold leading-10">“{section.Quote}”</p>
@@ -118,24 +118,24 @@ function DynamicContent(props) {
   }
 
   function renderSection(section) {
-    switch (section.__typename) {
-      case 'ComponentImagesImages':
+    switch (section.__component) {
+      case 'images.images':
         return (
-          <div className="grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 [&>*]:py-3 [&>*]:md:p-0 py-[2em] md:pt-[12em]">
+          <div className="grid grid-cols-1 md:grid-cols-6 [&>*]:md:p-0 py-[2em] md:pt-[12em]">
             {renderImageSection(section.images.data)}
           </div>
         )
         break;
-      case 'ComponentListClassLevelList':
-      case 'ComponentListRetreatsList':
-      case 'ComponentListTeachersList':
+      case 'list.class-level-list':
+      case 'list.retreats-list':
+      case 'list.teachers-list':
         return (
           <div id={convertToSlug(section.title)} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 pt-[7em]'>
             <StickyTopListSection section={section} />
           </div>
         )
-      case 'ComponentTextQuote':
-      case 'ComponentTextTitleContentContent':
+      case 'text.quote':
+      case 'text.title-content-content':
         return (
           <div id={section.slug} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 pt-[7em]'>
             {renderTextSection(section)}

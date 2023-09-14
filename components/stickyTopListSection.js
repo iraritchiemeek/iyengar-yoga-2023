@@ -7,7 +7,7 @@ import useStickyActiveHighlighter from "./useStickyActiveHighlighter";
 import { StickyTitle, StyledMarkdown, StyledLink } from './text';
 import { StartContentGridItem, CenterContentGridItem, EndContentGridItem } from './grid';
 
-function StickyTopListSection({section}) {
+function StickyTopListSection({section, titleKey = "title",}) {
   const contentRef = useRef();
 
   const activeSection = useStickyActiveHighlighter(
@@ -20,7 +20,7 @@ function StickyTopListSection({section}) {
   const renderListNav = list => {
     return (
       <ul className="pb-4">
-        {list.map(item => <li key={item.id} data-id={item.id} className={item.id === activeSection ? "font-bold" : ""}><StyledLink href={`#${convertToSlug(item.attributes.title)}`}>{item.attributes.title}</StyledLink></li>)}
+        {list.map(item => <li key={item.id} data-id={item.id} className={item.id === activeSection ? "font-bold" : ""}><StyledLink href={`#${convertToSlug(item.attributes[titleKey])}`}>{item.attributes[titleKey]}</StyledLink></li>)}
       </ul>
     )
   }
@@ -30,17 +30,16 @@ function StickyTopListSection({section}) {
     return (
       list.map(item => {
         return (
-          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`} className="pb-8">
+          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes[titleKey])}`} className="pb-8">
             {getImage(item) &&
               <Image
                 className="mb-2"
-                // style={{maxHeight: '300px', objectFit: 'contain', objectPosition: 'top', maxWidth: '100%'}}
                 src={getImage(item).url}
                 width={getImage(item).width}
                 height={getImage(item).height}
               />
             }
-            <h3 className="font-bold">{item.attributes.title}</h3>
+            <h3 className="font-bold">{item.attributes[titleKey]}</h3>
             <StyledMarkdown content={item.attributes.description} />
           </div>
         )

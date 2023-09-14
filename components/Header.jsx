@@ -39,7 +39,7 @@ export default function Header() {
 
   return (
     <header ref={headerRef}>
-      {!navVisible && <div className="container mx-auto text-xl font-bold px-3 col-span-2 px-3 leading-6 fixed left-0 right-0 pt-2"><Link href="/">Iyengar Yoga Centre</Link></div>}
+      {!navVisible && <div className="container mx-auto text-xl font-bold px-3 col-span-2 px-3 leading-6 fixed left-0 right-0 pt-2 hidden lg:inline-block"><Link href="/">Iyengar Yoga Centre</Link></div>}
       <nav className="w-full grid grid-cols-6 container mx-auto py-8">
         <div className="text-xl font-bold px-3 col-span-4 md:col-span-2 px-3 leading-6">
           <Link href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>

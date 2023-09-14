@@ -30,7 +30,7 @@ export default function RootLayout({children}) {
     <html lang="en">
       <body className={moderat.className}>
         <BgGrid />
-        <ScrollProgressBar />
+        {/*<ScrollProgressBar />*/}
         <Header />
         {children}
         <Footer />

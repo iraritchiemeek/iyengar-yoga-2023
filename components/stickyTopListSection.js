@@ -6,8 +6,9 @@ import Image from 'next/image'
 import useStickyActiveHighlighter from "./useStickyActiveHighlighter";
 import { StickyTitle, StyledMarkdown, StyledLink } from './text';
 import { StartContentGridItem, CenterContentGridItem, EndContentGridItem } from './grid';
+import { SecondaryButton } from "./buttons";
 
-function StickyTopListSection({section, titleKey = "title",}) {
+function StickyTopListSection({section, withLink, slug}) {
   const contentRef = useRef();
 
   const activeSection = useStickyActiveHighlighter(
@@ -22,7 +23,7 @@ function StickyTopListSection({section, titleKey = "title",}) {
       <ul className="pb-4">
         {list.map(item => {
           <li key={item.id} data-id={item.id} className={item.id === activeSection ? "font-bold" : ""}>
-            <StyledLink href={`#${convertToSlug(item.attributes[titleKey])}`}>{item.attributes[titleKey]}</StyledLink>
+            <StyledLink href={`#${convertToSlug(item.attributes.title)}`}>{item.attributes.title}</StyledLink>
           </li>
           })
         }
@@ -31,21 +32,25 @@ function StickyTopListSection({section, titleKey = "title",}) {
   }
 
   const renderListContent = list => {
+    console.log(section)
     const getImage = item => item.attributes.image && item.attributes.image.data && item.attributes.image.data.attributes.formats.medium
     return (
       list.map(item => {
         return (
-          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes[titleKey])}`} className="pb-8">
+          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`} className="pb-8">
             {getImage(item) &&
               <Image
-                className="mb-2"
+                className="mb-4"
                 src={getImage(item).url}
                 width={getImage(item).width}
                 height={getImage(item).height}
               />
             }
-            <h3 className="font-bold">{item.attributes[titleKey]}</h3>
+            <h3 className="font-bold">{item.attributes.title}</h3>
             <StyledMarkdown content={item.attributes.description} />
+            {withLink && (
+              <SecondaryButton href={`${slug}/${item.id}`} children="Read more" className="mt-4" />
+            )}
           </div>
         )
       })

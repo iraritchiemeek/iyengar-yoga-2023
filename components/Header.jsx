@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import { useState, useRef, useEffect, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon, GlobeAsiaAustraliaIcon, CalendarDaysIcon } from '@heroicons/react/24/solid'
+import { Bars3Icon, XMarkIcon, GlobeAsiaAustraliaIcon, CalendarDaysIcon, NewspaperIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link';
 import {StyledLink} from './text'
 
@@ -70,6 +70,9 @@ export default function Header() {
             </NavLink>
             <NavLink className='font-bold' href="/retreats">
               <div className='flex items-end'><GlobeAsiaAustraliaIcon className='h-5 w-5 me-2' />Retreats</div>
+            </NavLink>
+            <NavLink className='font-bold' href="/newsletters">
+              <div className='flex items-end'><NewspaperIcon className='h-5 w-5 me-2' />Newsletters</div>
             </NavLink>
           </div>
         </div>

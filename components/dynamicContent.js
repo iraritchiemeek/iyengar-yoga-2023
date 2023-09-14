@@ -5,26 +5,27 @@ import TextContentSection from './text/content';
 import { Quote } from './text/quote';
 
 const sectionHandlers = {
-  'images.images': ImageSection,
-  'text.quote': Quote,
-  'text.title-content-content': TextContentSection,
-  'list.class-level-list': StickyTopListSection,
-  'list.retreats-list': StickyTopListSection,
-  'list.teachers-list': StickyTopListSection,
+  'images.images': { component: ImageSection },
+  'text.quote': { component: Quote },
+  'text.title-content-content': { component: TextContentSection },
+  'list.class-level-list': { component: StickyTopListSection },
+  'list.retreats-list': { component: StickyTopListSection, sectionProps: { withLink: true, slug: 'retreats' } },
+  'list.teachers-list': { component: StickyTopListSection },
 };
 
-const convertToSlug = string => string && string.toLowerCase().replace(/[^\w ]+/g, '') .replace(/ +/g, '-')
+const convertToSlug = string => string && string.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g, '-');
 
 const DynamicContent = (props) => {
   const { section } = props;
+  const handler = sectionHandlers[section.__component];
 
-  const SectionComponent = sectionHandlers[section.__component];
+  if (!handler || !handler.component) return null;
   
-  if (!SectionComponent) return null;
+  const { component: SectionComponent, sectionProps } = handler;
 
   return (
-    <div id={convertToSlug(section.title)} className={`grid grid-cols-1 md:grid-cols-6 pt-[7em] ${section.__component !== 'images.images' ? '[&>*]:px-3' : ''}`}>
-        <SectionComponent section={section} />
+    <div id={section.slug || convertToSlug(section.title)} className={`grid grid-cols-1 md:grid-cols-6 pt-[7em] ${section.__component !== 'images.images' ? '[&>*]:px-3' : ''}`}>
+      <SectionComponent section={section} {...sectionProps} />
     </div>
   );
 };

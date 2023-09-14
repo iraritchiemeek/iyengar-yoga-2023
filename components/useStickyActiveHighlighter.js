@@ -6,6 +6,7 @@ const useStickyActiveHighlighter = (sections, contentRef) => {
   const [activeSection, setActiveSection] = useState("");
 
   const handleScroll = () => {
+    if (!contentRef.current) return; 
     let currentSection = "";
     sections.forEach((section, index) => {
       const element = contentRef.current.querySelector(
@@ -22,6 +23,7 @@ const useStickyActiveHighlighter = (sections, contentRef) => {
   };
 
   useEffect(() => {
+    if (!contentRef.current) return; 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {

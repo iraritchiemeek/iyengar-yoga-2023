@@ -1,8 +1,9 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useState, useRef, useEffect, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
+import { Bars3Icon, XMarkIcon, GlobeAsiaAustraliaIcon, CalendarDaysIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link';
 import {StyledLink} from './text'
 
@@ -29,13 +30,18 @@ export default function Header() {
     return () => observer.disconnect();
   }, []);
 
-  const NavLink = ({ href, children, className = '' }) => (
-    <div onClick={() => setMobileMenuOpen(false)} className={`w-full block pb-1 ${className}`}>
-      <StyledLink className='text-lg md:text-base' href={href}>
-        {children}
-      </StyledLink>
-    </div>
-  );
+  const pathname = usePathname()
+
+  const NavLink = ({ href, children, className = '' }) => {
+    const linkClass = (pathname === '/' && href === '/') || (href !== '/' && pathname.includes(href)) ? '' : 'no-underline';
+    return(
+      <div onClick={() => setMobileMenuOpen(false)} className={`w-full block pb-1 ${className}`}>
+        <StyledLink className={linkClass} href={href}>
+          {children}
+        </StyledLink>
+      </div>
+    )
+  };
 
   return (
     <header ref={headerRef}>
@@ -46,21 +52,24 @@ export default function Header() {
         </div>
         <div className="z-10 col-start-4 col-span-3 grid-cols-3 [&>*]:px-3 hidden md:grid">
           <div>
-            <NavLink href="/#">Home</NavLink>
+            <NavLink className='font-bold' href="/">Home</NavLink>
             <NavLink href="/#new-students">New students</NavLink>
             <NavLink href="/#class-descriptions">Class descriptions</NavLink>
             <NavLink href="/#pricing">Booking and pricing</NavLink>
             <NavLink href="/#attending">Attending class</NavLink>
           </div>
           <div>
-            <NavLink href="/our-studio">Our studio</NavLink>
+            <NavLink className='font-bold' href="/our-studio">Our studio</NavLink>
             <NavLink href="/our-studio#our-teachers">Our teachers</NavLink>
             <NavLink href="/our-studio#why-iyengar">Why Iyengar yoga?</NavLink>
             <NavLink href="#footer">Contact</NavLink>
           </div>
           <div>
             <NavLink href="/timetable" className='font-bold'>
-              Timetable <span aria-hidden="true">&rarr;</span>
+              <div className='flex items-end'><CalendarDaysIcon className='h-5 w-5 me-2' />Timetable</div>
+            </NavLink>
+            <NavLink className='font-bold' href="/retreats">
+              <div className='flex items-end'><GlobeAsiaAustraliaIcon className='h-5 w-5 me-2' />Retreats</div>
             </NavLink>
           </div>
         </div>
@@ -99,7 +108,7 @@ export default function Header() {
               </div>
               <div className="flex flex-col px-3 gap-4">
                 <div>
-                  <NavLink href="/#">Home</NavLink>
+                  <NavLink href="/">Home</NavLink>
                   <NavLink href="/#new-students">New students</NavLink>
                   <NavLink href="/#class-descriptions">Class descriptions</NavLink>
                   <NavLink href="/#pricing">Booking and pricing</NavLink>

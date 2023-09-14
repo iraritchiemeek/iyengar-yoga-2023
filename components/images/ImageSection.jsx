@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function ImageSection({section}) {
 		const images = section.images.data
-    const getImage = index => images[index].attributes.formats.large
+    const getImage = index => images[index].attributes.formats.large || images[index].attributes.formats.medium
     switch(images.length){
       case 1:
         return (

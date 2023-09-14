@@ -20,7 +20,12 @@ function StickyTopListSection({section, titleKey = "title",}) {
   const renderListNav = list => {
     return (
       <ul className="pb-4">
-        {list.map(item => <li key={item.id} data-id={item.id} className={item.id === activeSection ? "font-bold" : ""}><StyledLink href={`#${convertToSlug(item.attributes[titleKey])}`}>{item.attributes[titleKey]}</StyledLink></li>)}
+        {list.map(item => {
+          <li key={item.id} data-id={item.id} className={item.id === activeSection ? "font-bold" : ""}>
+            <StyledLink href={`#${convertToSlug(item.attributes[titleKey])}`}>{item.attributes[titleKey]}</StyledLink>
+          </li>
+          })
+        }
       </ul>
     )
   }

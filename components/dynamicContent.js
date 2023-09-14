@@ -22,11 +22,9 @@ const DynamicContent = (props) => {
   
   if (!SectionComponent) return null;
 
-  console.log(section)
-
   return (
-    <div id={convertToSlug(section.title)} className='grid grid-cols-1 md:grid-cols-6 [&>*]:px-3 pt-[7em]'>
-      <SectionComponent section={section} />
+    <div id={convertToSlug(section.title)} className={`grid grid-cols-1 md:grid-cols-6 pt-[7em] ${section.__component !== 'images.images' ? '[&>*]:px-3' : ''}`}>
+        <SectionComponent section={section} />
     </div>
   );
 };

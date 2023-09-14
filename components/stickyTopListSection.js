@@ -6,7 +6,8 @@ import Image from 'next/image'
 import useStickyActiveHighlighter from "./useStickyActiveHighlighter";
 import { StickyTitle, StyledMarkdown, StyledLink } from './text';
 import { StartContentGridItem, CenterContentGridItem, EndContentGridItem } from './grid';
-import { SecondaryButton } from "./buttons";
+import { PrimaryButton } from "./buttons";
+import { ArrowLongRightIcon } from '@heroicons/react/24/solid'
 
 function StickyTopListSection({section, withLink, slug}) {
   const contentRef = useRef();
@@ -49,7 +50,11 @@ function StickyTopListSection({section, withLink, slug}) {
             <h3 className="font-bold">{item.attributes.title}</h3>
             <StyledMarkdown content={item.attributes.description} />
             {withLink && (
-              <SecondaryButton href={`${slug}/${item.id}`} children="Read more" className="mt-4" />
+              <PrimaryButton href={`${slug}/${item.id}`} className="mt-4" >
+                <div className="flex items-end">
+                  View details<ArrowLongRightIcon className="h-6 w-6 ms-2" />
+                </div>
+              </PrimaryButton>
             )}
           </div>
         )

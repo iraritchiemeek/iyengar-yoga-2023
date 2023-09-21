@@ -24,8 +24,8 @@ const ScrollProgressBar = () => {
   }, []);
 
   return (
-    <div className="scroll-progress-container">
-      <div className="scroll-progress-bar" style={{ width: `${scrollWidth}%` }}></div>
+    <div className="h-1 fixed w-full z-10">
+      <div className="h-full bg-yoga-blue" style={{ width: `${scrollWidth}%` }}></div>
     </div>
   );
 };

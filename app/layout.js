@@ -27,10 +27,10 @@ export const metadata = {
 
 export default function RootLayout({children}) {
   return (
-    <html lang="en">
+    <html lang="en" className='scroll-smooth'>
       <body className={moderat.className}>
         <BgGrid />
-        {/*<ScrollProgressBar />*/}
+        <ScrollProgressBar />
         <Header />
         {children}
         <Footer />

@@ -14,7 +14,7 @@ export default function TextContentSection({section}) {
           content={section.center_content}
         />
       </CenterContentGridItem>
-      <div className='md:col-span-3 lg:col-span-2'>
+      <div className='md:col-span-3 lg:col-span-2 pt-2'>
         <StyledMarkdown
           content={section.main_content}
         />

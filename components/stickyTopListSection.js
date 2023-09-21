@@ -22,9 +22,11 @@ function StickyTopListSection({section, withLink, slug}) {
     return (
       <ul className="pb-4">
         {list.map(item => {
-          <li key={item.id} data-id={item.id} className={item.id === activeSection ? "font-bold" : ""}>
-            <StyledLink href={`#${convertToSlug(item.attributes.title)}`}>{item.attributes.title}</StyledLink>
-          </li>
+          return (
+            <li key={item.id} data-id={item.id} className={item.id === activeSection ? "font-bold" : ""}>
+              <StyledLink href={`#${convertToSlug(item.attributes.title)}`}>{item.attributes.title}</StyledLink>
+            </li>
+          )
           })
         }
       </ul>
@@ -32,12 +34,11 @@ function StickyTopListSection({section, withLink, slug}) {
   }
 
   const renderListContent = list => {
-    console.log(section)
     const getImage = item => item.attributes.image && item.attributes.image.data && item.attributes.image.data.attributes.formats.medium
     return (
       list.map(item => {
         return (
-          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`} className="pb-8">
+          <div key={item.id} data-id={item.id} id={`${convertToSlug(item.attributes.title)}`} className="pb-8 pt-2">
             {getImage(item) &&
               <Image
                 className="mb-4"

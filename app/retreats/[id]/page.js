@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import DynamicContent from 'components/dynamicContent'
+import BannerImage from '@/components/images/BannerImage';
 
 async function getData(id) {
   
@@ -23,14 +23,7 @@ export default async function HomePage({params}) {
 
   return (
     <main>
-      <Image
-        alt=""
-        className='h-[720px] object-cover'
-        src={banner_image.url}
-        width={banner_image.width}
-        height={banner_image.height}
-        priority
-      />
+      <BannerImage src={banner_image.url} />
       <div className="container mx-auto">
         {page.content.map(section => <DynamicContent section={section} />)}
       </div>

@@ -7,7 +7,6 @@ import useStickyActiveHighlighter from "./useStickyActiveHighlighter";
 import { StickyTitle, StyledMarkdown, StyledLink } from './text';
 import { StartContentGridItem, CenterContentGridItem, EndContentGridItem } from './grid';
 import { PrimaryButton } from "./buttons";
-import { ArrowLongRightIcon } from '@heroicons/react/24/solid'
 
 function StickyTopListSection({section, withLink, slug}) {
   const contentRef = useRef();
@@ -50,9 +49,9 @@ function StickyTopListSection({section, withLink, slug}) {
             <h3 className="font-bold">{item.attributes.title}</h3>
             <StyledMarkdown content={item.attributes.description} />
             {withLink && (
-              <PrimaryButton href={`${slug}/${item.id}`} className="mt-4" >
+              <PrimaryButton href={`${slug}/${item.id}`} className="mt-4 mb-5" >
                 <div className="flex items-end">
-                  View details<ArrowLongRightIcon className="h-6 w-6 ms-2" />
+                  Read more
                 </div>
               </PrimaryButton>
             )}

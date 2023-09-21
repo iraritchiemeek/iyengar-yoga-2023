@@ -20,22 +20,22 @@ export default function ImageSection({section}) {
         break
       case 2:
         return(
-          <>
+          <div className="grid grid-cols-1 md:grid-rows-6 md:grid-cols-6 md:col-span-6">
             <Image
-              className='md:col-span-3 md:row-span-6'
+              className='md:col-span-3 md:row-span-6 md:row-start-0 p-3 md:p-0'
               alt=""
               src={getImage(0).url}
               width={getImage(0).width}
               height={getImage(0).height}
             />
             <Image
-              className='md:col-span-2 md:col-start-5 md:row-start-3 md:row-span-3'
+              className='md:col-span-2 md:col-start-5 md:row-start-2 md:row-span-3 md:row-end-6 p-3 md:p-0'
               src={getImage(1).url}
               alt=""
               width={getImage(1).width}
               height={getImage(1).height}
             />
-          </>
+          </div>
         )
         break;
       case 3:

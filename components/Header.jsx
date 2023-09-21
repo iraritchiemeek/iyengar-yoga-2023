@@ -71,9 +71,6 @@ export default function Header() {
             <NavLink className='font-bold' href="/retreats">
               <div className='flex items-end'><GlobeAsiaAustraliaIcon className='h-5 w-5 me-2' />Retreats</div>
             </NavLink>
-            <NavLink className='font-bold' href="/newsletters">
-              <div className='flex items-end'><NewspaperIcon className='h-5 w-5 me-2' />Newsletters</div>
-            </NavLink>
           </div>
         </div>
         <div className="flex justify-end col-span-2 md:hidden px-3">

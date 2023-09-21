@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <header ref={headerRef}>
-      {!navVisible && <div className="container mx-auto text-xl font-bold px-3 col-span-2 px-3 leading-6 fixed left-0 right-0 pt-2 hidden lg:inline-block z-10"><Link href="/">Iyengar Yoga Centre</Link></div>}
+      {!navVisible && <div className="container mx-auto text-xl font-bold px-3 col-span-2 px-3 leading-6 fixed left-0 right-0 pt-2 hidden lg:inline-block z-10 pointer-events-none"><Link href="/">Iyengar Yoga Centre</Link></div>}
       <nav className="w-full grid grid-cols-6 container mx-auto py-8">
         <div className="text-xl font-bold px-3 col-span-4 md:col-span-2 px-3 leading-6">
           <Link href="/">Iyengar Yoga Centre<span><br/>of Wellington<br/>New Zealand</span></Link>
@@ -122,7 +122,10 @@ export default function Header() {
                 </div>
                 <div>
                   <NavLink href="/timetable" className='font-bold'>
-                    Timetable <span aria-hidden="true">&rarr;</span>
+                    <div className='flex items-end'><CalendarDaysIcon className='h-5 w-5 me-2' />Timetable</div>
+                  </NavLink>
+                  <NavLink className='font-bold' href="/retreats">
+                    <div className='flex items-end'><GlobeAsiaAustraliaIcon className='h-5 w-5 me-2' />Retreats</div>
                   </NavLink>
                 </div>
               </div>

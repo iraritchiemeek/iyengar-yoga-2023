@@ -1,175 +1,33 @@
-import {Container, Row, Col} from 'react-bootstrap';
-import ReactMarkdown from 'react-markdown';
 import Image from 'next/image'
 import StickyTopListSection from 'components/stickyTopListSection'
-import Link from 'next/link';
-import { Parallax } from 'react-scroll-parallax';
+import ImageSection from './images/ImageSection';
+import TextContentSection from './text/content';
+import { Quote } from './text/quote';
 
-function DynamicContent(props) {
+const sectionHandlers = {
+  'images.images': { component: ImageSection },
+  'text.quote': { component: Quote },
+  'text.title-content-content': { component: TextContentSection },
+  'list.class-level-list': { component: StickyTopListSection },
+  'list.retreats-list': { component: StickyTopListSection, sectionProps: { withLink: true, slug: 'retreats' } },
+  'list.teachers-list': { component: StickyTopListSection },
+};
 
-  const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
+const convertToSlug = string => string && string.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g, '-');
 
-  const convertToSlug = string => string.toLowerCase().replace(/[^\w ]+/g, '') .replace(/ +/g, '-')
+const DynamicContent = (props) => {
+  const { section } = props;
+  const handler = sectionHandlers[section.__component];
 
-  function renderImageSection(images) {
-    const getImage = index => images[index].attributes.formats.medium
-    switch(images.length){
-      case 1:
-        return (
-          <Col>
-            <Image
-              className="left"
-              style={{maxHeight: 'unset', objectFit: 'cover', objectPosition: 'center'}}
-              src={images[0].attributes.url}
-              width={images[0].attributes.width}
-              height={images[0].attributes.height}
-            />
-          </Col>
-        )
-        break
-      case 2:
-        return(
-          <>
-            <Col xs={12} md={6}>
-              <Parallax speed={getRandomNumber(-10, 10)}>
-                <Image
-                  className="left"
-                  src={getImage(0).url}
-                  width={getImage(0).width}
-                  height={getImage(0).height}
-                />
-              </Parallax>
-            </Col>
-            <Col></Col>
-            <Col xs={12} md={4}>
-              <Parallax speed={getRandomNumber(-10, 10)}>
-                <Image
-                  src={getImage(1).url}
-                  width={getImage(1).width}
-                  height={getImage(1).height}
-                />
-              </Parallax>
-            </Col>
-          </>
-        )
-        break;
-      case 3:
-        return (
-          <>
-            <Col xs={12} md={6} className="d-flex flex-wrap">
-              <Row>
-                <Col xs={12}>
-                  <Parallax speed={getRandomNumber(-10, 10)}>
-                    <Image
-                      className="left"
-                      src={getImage(0).url}
-                      width={getImage(0).width}
-                      height={getImage(0).height}
-                    />
-                  </Parallax>
-                </Col>
-                <Col/>
-                <Col xs={12} md={8}>
-                  <Parallax speed={getRandomNumber(-10, 10)}>
-                    <Image
-                      className="left"
-                      className="mt-4"
-                      src={getImage(1).url}
-                      width={getImage(1).width}
-                      height={getImage(1).height}
-                    />
-                  </Parallax>
-                </Col>
-              </Row>
-            </Col>
-            <Col></Col>
-            <Col xs={12} md={4} className="d-flex align-items-center">
-              <Parallax speed={getRandomNumber(-10, 10)}>
-                <Image
-                  src={getImage(2).url}
-                  width={getImage(2).width}
-                  height={getImage(2).height}
-                />
-              </Parallax>
-            </Col>
-          </>
-        )
-        break;
-
-      default:
-        return null
-    }
-  }
-
-  function renderTextSection(section) {
-    switch (section.__typename) {
-      case 'ComponentTextTitleContentContent':
-        return (
-          <>
-            <Col xs={12} md={3} ><h2 className="sticky-md-top">{section.Title}</h2></Col>
-            <Col xs={12} md={3} ><ReactMarkdown className="sticky-md-top">{section.center_content}</ReactMarkdown></Col>
-            <Col xs={12} md={6}><ReactMarkdown>{section.main_content}</ReactMarkdown></Col>
-          </>
-        )
-        break;
-      case 'ComponentTextQuote':
-        return (
-          <Col>
-            <p className="quote">“{section.Quote}”</p>
-            <p className="quote-author">- {section.Author}</p>
-          </Col>
-        )
-        break;
-      default:
-        return null;
-    }
-  }
-
-  function renderSection(section) {
-    switch (section.__typename) {
-      case 'ComponentImagesImages':
-        return (
-          <Row className="image-section">
-            {renderImageSection(section.images.data)}
-          </Row>
-        )
-        break;
-      case 'ComponentListClassLevelList':
-      case 'ComponentListRetreatsList':
-      case 'ComponentListTeachersList':
-        return (
-          <Row id={convertToSlug(section.title)}>
-            <Col></Col>
-            <Col xs={12} md={8}>
-              <Row >
-                <StickyTopListSection section={section} />
-              </Row>
-            </Col>
-            <Col></Col>
-          </Row>
-        )
-      case 'ComponentTextQuote':
-      case 'ComponentTextTitleContentContent':
-        return (
-          <Row id={section.slug}>
-            <Col></Col>
-            <Col xs={12} md={8}>
-              <Row >
-                {renderTextSection(section)}
-              </Row>
-            </Col>
-            <Col></Col>
-          </Row>
-        )
-        break;
-      default:
-        return null;
-    }
-  }
+  if (!handler || !handler.component) return null;
+  
+  const { component: SectionComponent, sectionProps } = handler;
 
   return (
-  	renderSection(props.section)
+    <div id={section.slug || convertToSlug(section.title)} className={`grid grid-cols-1 md:grid-cols-6 mt-[7em] ${section.__component !== 'images.images' ? '[&>*]:px-3' : ''}`}>
+      <SectionComponent section={section} {...sectionProps} />
+    </div>
   );
-}
+};
 
 export default DynamicContent;

@@ -1,5 +1,6 @@
+'use client'
+
 import { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
 
 export default function HomePage() {
   const [iframeUrl, setIframeUrl] = useState("https://wellingtonyoga.punchpass.com/calendar?embed=true");
@@ -10,17 +11,15 @@ export default function HomePage() {
       setIframeUrl(isMobile ? "https://wellingtonyoga.punchpass.com/classes?embed=true" : "https://wellingtonyoga.punchpass.com/calendar?embed=true");
     }
 
-    checkSize(); // Check immediately on mount
+    checkSize();
 
     window.addEventListener('resize', checkSize);
     return () => window.removeEventListener('resize', checkSize);
   }, []);
 
   return (
-    <main>
-      <Container>
-        <iframe name="frame2" src={iframeUrl} height="1500" width="100%" frameBorder="0" allowFullScreen></iframe>
-      </Container>
-    </main>
+  	<div className='bg-white relative'>
+		  <iframe src={iframeUrl} height="2000" width="100%" frameBorder="0" allowFullScreen></iframe>
+  	</div>
   );
 }

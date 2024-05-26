@@ -68,9 +68,9 @@ export default function Header() {
             <NavLink href="/timetable" className='font-bold'>
               <div className='flex items-end'><CalendarDaysIcon className='h-5 w-5 me-2' />Timetable</div>
             </NavLink>
-{/*            <NavLink className='font-bold' href="/retreats">
+            <NavLink className='font-bold' href="/retreats">
               <div className='flex items-end'><GlobeAsiaAustraliaIcon className='h-5 w-5 me-2' />Retreats</div>
-            </NavLink>*/}
+            </NavLink>
           </div>
         </div>
         <div className="flex justify-end col-span-2 md:hidden px-3">

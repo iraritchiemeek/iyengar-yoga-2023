@@ -1,6 +1,8 @@
 import DynamicContent from 'components/dynamicContent'
 import BannerImage from '@/components/images/BannerImage';
 
+export const dynamic = 'force-dynamic';
+
 async function getData() {
   
   const page_id = 1

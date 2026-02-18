@@ -1,8 +1,10 @@
 import DynamicContent from 'components/dynamicContent'
 import BannerImage from '@/components/images/BannerImage';
 
+export const dynamic = 'force-dynamic';
+
 async function getData() {
-  
+
   const page_id = 3
 
   const res = await fetch(`https://polar-lowlands-54507.herokuapp.com/api/pages/${page_id}?populate[banner_image]=*&populate[content][populate][images]=*&populate[content][populate][list][populate][image]=*`, {

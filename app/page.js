@@ -1,25 +1,34 @@
-'use client'
+import DynamicContent from 'components/dynamicContent'
+import BannerImage from '@/components/images/BannerImage';
 
-import { useEffect, useState } from 'react';
+async function getData() {
 
-export default function HomePage() {
-  const [iframeUrl, setIframeUrl] = useState("https://wellingtonyoga.punchpass.com/calendar?embed=true");
+  const page_id = 1
 
-  useEffect(() => {
-    function checkSize() {
-      const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      setIframeUrl(isMobile ? "https://wellingtonyoga.punchpass.com/classes?embed=true" : "https://wellingtonyoga.punchpass.com/calendar?embed=true");
-    }
+  const res = await fetch(`https://polar-lowlands-54507.herokuapp.com/api/pages/${page_id}?populate[banner_image]=*&populate[content][populate][images]=*&populate[content][populate][list][populate][image]=*`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+    },
+    next: { revalidate: 0 }
+  });
 
-    checkSize();
+  const data = await res.json();
 
-    window.addEventListener('resize', checkSize);
-    return () => window.removeEventListener('resize', checkSize);
-  }, []);
+  return data.data.attributes;
+};
+
+export default async function HomePage() {
+
+  const page = await getData();
+
+  const banner_image = page.banner_image.data.attributes
 
   return (
-    <div className='bg-white relative'>
-      <iframe src={iframeUrl} height="2000" width="100%" frameBorder="0" allowFullScreen></iframe>
-    </div>
+    <main>
+      <BannerImage src={banner_image.url} />
+      <div className="container mx-auto">
+        {page.content.map(section => <DynamicContent section={section} />)}
+      </div>
+    </main>
   );
 }

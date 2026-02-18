@@ -1,8 +1,6 @@
 import DynamicContent from 'components/dynamicContent'
 import BannerImage from '@/components/images/BannerImage';
 
-export const dynamic = 'force-dynamic';
-
 async function getData() {
 
   const page_id = 3
@@ -22,7 +20,7 @@ async function getData() {
 export default async function HomePage() {
 
   const page = await getData();
-  
+
   const banner_image = page.banner_image.data.attributes
 
   return (

@@ -5,7 +5,7 @@ async function getData() {
   
   const page_id = 1
 
-  const res = await fetch(`https://polar-lowlands-54507.herokuapp.com/api/pages/${page_id}?populate=deep`, {
+  const res = await fetch(`https://polar-lowlands-54507.herokuapp.com/api/pages/${page_id}?populate[banner_image]=*&populate[content][populate][images]=*&populate[content][populate][list][populate][image]=*`, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
     },

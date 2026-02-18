@@ -3,7 +3,7 @@ import BannerImage from '@/components/images/BannerImage';
 
 async function getData(id) {
   
-  const res = await fetch(`https://polar-lowlands-54507.herokuapp.com/api/retreats/${id}?populate=deep`, {
+  const res = await fetch(`https://polar-lowlands-54507.herokuapp.com/api/retreats/${id}?populate[image]=*&populate[content][populate][images]=*`, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
     },
